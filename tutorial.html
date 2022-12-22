@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Missing data</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<pre><code class="r">library(knitr)
+knit(&quot;tutorial.rmd&quot;,&quot;tutorial.md&quot;)
+library(markdown)
+markdownToHTML(&quot;tutorial.md&quot;,&quot;tutorial.html&quot;)
+</code></pre>
+
+<h1>Missing data</h1>
+
+<h2>Load the dataset</h2>
+
+<pre><code class="r">library(mice)
+</code></pre>
+
+<pre><code>## Loading required package: lattice
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;mice&#39;
+</code></pre>
+
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     cbind, rbind
+</code></pre>
+
+<pre><code class="r">load(&quot;dataset/dataset.rda&quot;)
+idx &lt;- match(rownames(sva.smoking), colnames(meth))
+meth &lt;- meth[,idx]
+samples &lt;- samples[idx,]
+sva.age &lt;- sva.age[idx,]
+</code></pre>
+
+<p>Double-check that data objects are synchronized.</p>
+
+<pre><code class="r">stopifnot(identical(rownames(sva.smoking), colnames(meth)))
+stopifnot(identical(rownames(sva.smoking), as.character(samples$gsm)))
+stopifnot(identical(rownames(sva.smoking), rownames(sva.age)))
+</code></pre>
+
+<p>Make sure that character variables are factors.</p>
+
+<pre><code class="r">for (i in 1:ncol(samples))
+    if (is.character(samples[[i]]))
+        samples[[i]] &lt;- as.factor(samples[[i]])
+</code></pre>
+
+<p>Remove the &#39;gsm&#39; (individual id) and &#39;gse&#39; (dataset) variables
+since no individual has more than methylation profile.</p>
+
+<pre><code class="r">samples$gsm &lt;- samples$gse &lt;- NULL
+</code></pre>
+
+<h2>Exploring missing patterns</h2>
+
+<p>We&#39;ll be randomly removing data.
+To make these analyses repeatable, we
+set a random seed.</p>
+
+<pre><code class="r">set.seed(20180312)
+</code></pre>
+
+<p>Remove 20 values from smoking status and age.</p>
+
+<pre><code class="r">samples.mis &lt;- samples
+samples.mis$smoking[sample(1:nrow(samples.mis), 20)] &lt;- NA
+samples.mis$age[sample(1:nrow(samples.mis),20)] &lt;- NA
+</code></pre>
+
+<p>Have a look at the missingness pattern.</p>
+
+<pre><code class="r">md.pattern(samples.mis)
+</code></pre>
+
+<p><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNTA0cHQiIGhlaWdodD0iNTA0cHQiIHZpZXdCb3g9IjAgMCA1MDQgNTA0IiB2ZXJzaW9uPSIxLjEiPgo8ZGVmcz4KPGc+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtMCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9IiIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC0xIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA1LjI1IC00LjUzMTI1IEMgNS4yNSAtNS43NjU2MjUgNC40MjE4NzUgLTYuNDY4NzUgMi45Njg3NSAtNi40Njg3NSBDIDEuNTE1NjI1IC02LjQ2ODc1IDAuNTYyNSAtNS43MTg3NSAwLjU2MjUgLTQuNTQ2ODc1IEMgMC41NjI1IC0zLjU2MjUgMS4wNjI1IC0zLjA5Mzc1IDIuNTYyNSAtMi43MzQzNzUgTCAzLjQ4NDM3NSAtMi41MTU2MjUgQyA0LjE4NzUgLTIuMzQzNzUgNC40Njg3NSAtMi4wOTM3NSA0LjQ2ODc1IC0xLjYyNSBDIDQuNDY4NzUgLTEuMDQ2ODc1IDMuODc1IC0wLjY0MDYyNSAzIC0wLjY0MDYyNSBDIDIuNDUzMTI1IC0wLjY0MDYyNSAyIC0wLjc5Njg3NSAxLjc1IC0xLjA2MjUgQyAxLjU5Mzc1IC0xLjI1IDEuNTMxMjUgLTEuNDIxODc1IDEuNDY4NzUgLTEuODc1IEwgMC40MDYyNSAtMS44NzUgQyAwLjQ1MzEyNSAtMC40MjE4NzUgMS4yNjU2MjUgMC4yODEyNSAyLjkyMTg3NSAwLjI4MTI1IEMgNC41IDAuMjgxMjUgNS41MTU2MjUgLTAuNSA1LjUxNTYyNSAtMS43MTg3NSBDIDUuNTE1NjI1IC0yLjY1NjI1IDQuOTg0Mzc1IC0zLjE3MTg3NSAzLjczNDM3NSAtMy40Njg3NSBMIDIuNzY1NjI1IC0zLjcwMzEyNSBDIDEuOTUzMTI1IC0zLjg5MDYyNSAxLjYwOTM3NSAtNC4xNTYyNSAxLjYwOTM3NSAtNC41OTM3NSBDIDEuNjA5Mzc1IC01LjE3MTg3NSAyLjEyNSAtNS41NDY4NzUgMi45Mzc1IC01LjU0Njg3NSBDIDMuNzUgLTUuNTQ2ODc1IDQuMTcxODc1IC01LjIwMzEyNSA0LjIwMzEyNSAtNC41MzEyNSBaIE0gNS4yNSAtNC41MzEyNSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtMiI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gNi4xNTYyNSAtMi44MTI1IEMgNi4xNTYyNSAtMy43NjU2MjUgNi4wNzgxMjUgLTQuMzQzNzUgNS45MDYyNSAtNC44MTI1IEMgNS41IC01Ljg0Mzc1IDQuNTMxMjUgLTYuNDY4NzUgMy4zNTkzNzUgLTYuNDY4NzUgQyAxLjYwOTM3NSAtNi40Njg3NSAwLjQ4NDM3NSAtNS4xMjUgMC40ODQzNzUgLTMuMDYyNSBDIDAuNDg0Mzc1IC0xIDEuNTc4MTI1IDAuMjgxMjUgMy4zNDM3NSAwLjI4MTI1IEMgNC43ODEyNSAwLjI4MTI1IDUuNzY1NjI1IC0wLjU0Njg3NSA2LjAzMTI1IC0xLjkwNjI1IEwgNS4wMTU2MjUgLTEuOTA2MjUgQyA0LjczNDM3NSAtMS4wNzgxMjUgNC4xNzE4NzUgLTAuNjQwNjI1IDMuMzc1IC0wLjY0MDYyNSBDIDIuNzM0Mzc1IC0wLjY0MDYyNSAyLjIwMzEyNSAtMC45Mzc1IDEuODU5Mzc1IC0xLjQ2ODc1IEMgMS42MjUgLTEuODI4MTI1IDEuNTMxMjUgLTIuMTg3NSAxLjUzMTI1IC0yLjgxMjUgWiBNIDEuNTQ2ODc1IC0zLjYyNSBDIDEuNjI1IC00Ljc4MTI1IDIuMzQzNzUgLTUuNTQ2ODc1IDMuMzQzNzUgLTUuNTQ2ODc1IEMgNC4zMjgxMjUgLTUuNTQ2ODc1IDUuMDkzNzUgLTQuNzM0Mzc1IDUuMDkzNzUgLTMuNzAzMTI1IEMgNS4wOTM3NSAtMy42NzE4NzUgNS4wOTM3NSAtMy42NDA2MjUgNS4wNzgxMjUgLTMuNjI1IFogTSAxLjU0Njg3NSAtMy42MjUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTMiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDMuNSAtMy4yNSBMIDUuNjA5Mzc1IC02LjI4MTI1IEwgNC40ODQzNzUgLTYuMjgxMjUgTCAyLjk2ODc1IC00LjAxNTYyNSBMIDEuNDY4NzUgLTYuMjgxMjUgTCAwLjMyODEyNSAtNi4yODEyNSBMIDIuNDIxODc1IC0zLjIwMzEyNSBMIDAuMjAzMTI1IDAgTCAxLjM0Mzc1IDAgTCAyLjkzNzUgLTIuNDA2MjUgTCA0LjUxNTYyNSAwIEwgNS42NzE4NzUgMCBaIE0gMy41IC0zLjI1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC00Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAzLjI5Njg3NSAtOC41MTU2MjUgQyAyLjUxNTYyNSAtOC41MTU2MjUgMS43ODEyNSAtOC4xNTYyNSAxLjM0Mzc1IC03LjU3ODEyNSBDIDAuNzk2ODc1IC02LjgyODEyNSAwLjUxNTYyNSAtNS42ODc1IDAuNTE1NjI1IC00LjEwOTM3NSBDIDAuNTE1NjI1IC0xLjI1IDEuNDY4NzUgMC4yODEyNSAzLjI5Njg3NSAwLjI4MTI1IEMgNS4wOTM3NSAwLjI4MTI1IDYuMDc4MTI1IC0xLjI1IDYuMDc4MTI1IC00LjA0Njg3NSBDIDYuMDc4MTI1IC01LjcwMzEyNSA1LjgxMjUgLTYuNzk2ODc1IDUuMjUgLTcuNTc4MTI1IEMgNC44MTI1IC04LjE3MTg3NSA0LjEwOTM3NSAtOC41MTU2MjUgMy4yOTY4NzUgLTguNTE1NjI1IFogTSAzLjI5Njg3NSAtNy41NzgxMjUgQyA0LjQzNzUgLTcuNTc4MTI1IDUgLTYuNDIxODc1IDUgLTQuMTQwNjI1IEMgNSAtMS43MzQzNzUgNC40NTMxMjUgLTAuNTkzNzUgMy4yODEyNSAtMC41OTM3NSBDIDIuMTU2MjUgLTAuNTkzNzUgMS41OTM3NSAtMS43ODEyNSAxLjU5Mzc1IC00LjEwOTM3NSBDIDEuNTkzNzUgLTYuNDM3NSAyLjE1NjI1IC03LjU3ODEyNSAzLjI5Njg3NSAtNy41NzgxMjUgWiBNIDMuMjk2ODc1IC03LjU3ODEyNSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtNSI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gMC44NDM3NSAtNi4yODEyNSBMIDAuODQzNzUgMCBMIDEuODQzNzUgMCBMIDEuODQzNzUgLTMuOTUzMTI1IEMgMS44NDM3NSAtNC44NTkzNzUgMi41MTU2MjUgLTUuNTkzNzUgMy4zMjgxMjUgLTUuNTkzNzUgQyA0LjA2MjUgLTUuNTkzNzUgNC40ODQzNzUgLTUuMTQwNjI1IDQuNDg0Mzc1IC00LjMyODEyNSBMIDQuNDg0Mzc1IDAgTCA1LjUgMCBMIDUuNSAtMy45NTMxMjUgQyA1LjUgLTQuODU5Mzc1IDYuMTU2MjUgLTUuNTkzNzUgNi45Njg3NSAtNS41OTM3NSBDIDcuNzAzMTI1IC01LjU5Mzc1IDguMTQwNjI1IC01LjEyNSA4LjE0MDYyNSAtNC4zMjgxMjUgTCA4LjE0MDYyNSAwIEwgOS4xNDA2MjUgMCBMIDkuMTQwNjI1IC00LjcxODc1IEMgOS4xNDA2MjUgLTUuODQzNzUgOC41IC02LjQ2ODc1IDcuMzEyNSAtNi40Njg3NSBDIDYuNDg0Mzc1IC02LjQ2ODc1IDUuOTY4NzUgLTYuMjE4NzUgNS4zOTA2MjUgLTUuNTE1NjI1IEMgNS4wMTU2MjUgLTYuMTg3NSA0LjUxNTYyNSAtNi40Njg3NSAzLjcwMzEyNSAtNi40Njg3NSBDIDIuODU5Mzc1IC02LjQ2ODc1IDIuMjk2ODc1IC02LjE1NjI1IDEuNzY1NjI1IC01LjQwNjI1IEwgMS43NjU2MjUgLTYuMjgxMjUgWiBNIDAuODQzNzUgLTYuMjgxMjUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTYiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDMuMjY1NjI1IC02LjQ2ODc1IEMgMS41IC02LjQ2ODc1IDAuNDM3NSAtNS4yMDMxMjUgMC40Mzc1IC0zLjA5Mzc1IEMgMC40Mzc1IC0wLjk4NDM3NSAxLjQ4NDM3NSAwLjI4MTI1IDMuMjgxMjUgMC4yODEyNSBDIDUuMDQ2ODc1IDAuMjgxMjUgNi4xMjUgLTAuOTg0Mzc1IDYuMTI1IC0zLjA0Njg3NSBDIDYuMTI1IC01LjIxODc1IDUuMDc4MTI1IC02LjQ2ODc1IDMuMjY1NjI1IC02LjQ2ODc1IFogTSAzLjI4MTI1IC01LjU0Njg3NSBDIDQuNDA2MjUgLTUuNTQ2ODc1IDUuMDc4MTI1IC00LjYyNSA1LjA3ODEyNSAtMy4wNjI1IEMgNS4wNzgxMjUgLTEuNTc4MTI1IDQuMzc1IC0wLjY0MDYyNSAzLjI4MTI1IC0wLjY0MDYyNSBDIDIuMTU2MjUgLTAuNjQwNjI1IDEuNDY4NzUgLTEuNTc4MTI1IDEuNDY4NzUgLTMuMDkzNzUgQyAxLjQ2ODc1IC00LjYwOTM3NSAyLjE1NjI1IC01LjU0Njg3NSAzLjI4MTI1IC01LjU0Njg3NSBaIE0gMy4yODEyNSAtNS41NDY4NzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTciPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDEuNjg3NSAtOC43NSBMIDAuNzAzMTI1IC04Ljc1IEwgMC43MDMxMjUgMCBMIDEuNjg3NSAwIEwgMS42ODc1IC0yLjQ1MzEyNSBMIDIuNjU2MjUgLTMuNDA2MjUgTCA0Ljc4MTI1IDAgTCA2LjAzMTI1IDAgTCAzLjQ1MzEyNSAtNC4xMDkzNzUgTCA1LjY0MDYyNSAtNi4yODEyNSBMIDQuMzU5Mzc1IC02LjI4MTI1IEwgMS42ODc1IC0zLjYyNSBaIE0gMS42ODc1IC04Ljc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC04Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAxLjc5Njg3NSAtNi4yODEyNSBMIDAuNzk2ODc1IC02LjI4MTI1IEwgMC43OTY4NzUgMCBMIDEuNzk2ODc1IDAgWiBNIDEuNzk2ODc1IC04Ljc1IEwgMC43OTY4NzUgLTguNzUgTCAwLjc5Njg3NSAtNy40ODQzNzUgTCAxLjc5Njg3NSAtNy40ODQzNzUgWiBNIDEuNzk2ODc1IC04Ljc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC05Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAwLjg0Mzc1IC02LjI4MTI1IEwgMC44NDM3NSAwIEwgMS44NDM3NSAwIEwgMS44NDM3NSAtMy40Njg3NSBDIDEuODQzNzUgLTQuNzUgMi41MTU2MjUgLTUuNTkzNzUgMy41NDY4NzUgLTUuNTkzNzUgQyA0LjM0Mzc1IC01LjU5Mzc1IDQuODQzNzUgLTUuMTA5Mzc1IDQuODQzNzUgLTQuMzU5Mzc1IEwgNC44NDM3NSAwIEwgNS44NDM3NSAwIEwgNS44NDM3NSAtNC43NSBDIDUuODQzNzUgLTUuNzk2ODc1IDUuMDYyNSAtNi40Njg3NSAzLjg1OTM3NSAtNi40Njg3NSBDIDIuOTIxODc1IC02LjQ2ODc1IDIuMzEyNSAtNi4xMDkzNzUgMS43NjU2MjUgLTUuMjM0Mzc1IEwgMS43NjU2MjUgLTYuMjgxMjUgWiBNIDAuODQzNzUgLTYuMjgxMjUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTEwIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA0LjkzNzUgLTYuMjgxMjUgTCA0LjkzNzUgLTUuMzc1IEMgNC40Mzc1IC02LjEyNSAzLjgyODEyNSAtNi40Njg3NSAzLjAzMTI1IC02LjQ2ODc1IEMgMS40MjE4NzUgLTYuNDY4NzUgMC4zNDM3NSAtNS4wNzgxMjUgMC4zNDM3NSAtMy4wMzEyNSBDIDAuMzQzNzUgLTIgMC42MjUgLTEuMTU2MjUgMS4xNDA2MjUgLTAuNTYyNSBDIDEuNjA5Mzc1IC0wLjAzMTI1IDIuMjgxMjUgMC4yODEyNSAyLjkzNzUgMC4yODEyNSBDIDMuNzM0Mzc1IDAuMjgxMjUgNC4yODEyNSAtMC4wNjI1IDQuODQzNzUgLTAuODU5Mzc1IEwgNC44NDM3NSAtMC41MzEyNSBDIDQuODQzNzUgMC4zMjgxMjUgNC43MzQzNzUgMC44NDM3NSA0LjQ4NDM3NSAxLjE4NzUgQyA0LjIxODc1IDEuNTYyNSAzLjcwMzEyNSAxLjc4MTI1IDMuMDkzNzUgMS43ODEyNSBDIDIuNjQwNjI1IDEuNzgxMjUgMi4yMzQzNzUgMS42NTYyNSAxLjk1MzEyNSAxLjQzNzUgQyAxLjczNDM3NSAxLjI2NTYyNSAxLjYyNSAxLjA5Mzc1IDEuNTc4MTI1IDAuNzE4NzUgTCAwLjU0Njg3NSAwLjcxODc1IEMgMC42NTYyNSAxLjkwNjI1IDEuNTc4MTI1IDIuNjA5Mzc1IDMuMDYyNSAyLjYwOTM3NSBDIDQgMi42MDkzNzUgNC43OTY4NzUgMi4zMTI1IDUuMjAzMTI1IDEuODEyNSBDIDUuNjg3NSAxLjIzNDM3NSA1Ljg3NSAwLjQzNzUgNS44NzUgLTEuMDMxMjUgTCA1Ljg3NSAtNi4yODEyNSBaIE0gMy4xMjUgLTUuNTQ2ODc1IEMgNC4yMTg3NSAtNS41NDY4NzUgNC44NDM3NSAtNC42MjUgNC44NDM3NSAtMy4wNjI1IEMgNC44NDM3NSAtMS41NjI1IDQuMjAzMTI1IC0wLjY0MDYyNSAzLjE0MDYyNSAtMC42NDA2MjUgQyAyLjA0Njg3NSAtMC42NDA2MjUgMS4zOTA2MjUgLTEuNTc4MTI1IDEuMzkwNjI1IC0zLjA5Mzc1IEMgMS4zOTA2MjUgLTQuNjA5Mzc1IDIuMDYyNSAtNS41NDY4NzUgMy4xMjUgLTUuNTQ2ODc1IFogTSAzLjEyNSAtNS41NDY4NzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTExIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA2LjA3ODEyNSAtMS4wNDY4NzUgTCAxLjU5Mzc1IC0xLjA0Njg3NSBDIDEuNzAzMTI1IC0xLjczNDM3NSAyLjA5Mzc1IC0yLjE4NzUgMy4xMjUgLTIuNzk2ODc1IEwgNC4zMjgxMjUgLTMuNDM3NSBDIDUuNTE1NjI1IC00LjA5Mzc1IDYuMTI1IC00Ljk2ODc1IDYuMTI1IC02LjAxNTYyNSBDIDYuMTI1IC02LjcxODc1IDUuODQzNzUgLTcuMzc1IDUuMzQzNzUgLTcuODQzNzUgQyA0Ljg0Mzc1IC04LjI5Njg3NSA0LjIxODc1IC04LjUxNTYyNSAzLjQwNjI1IC04LjUxNTYyNSBDIDIuMzI4MTI1IC04LjUxNTYyNSAxLjUzMTI1IC04LjEyNSAxLjA2MjUgLTcuNDA2MjUgQyAwLjc1IC02Ljk1MzEyNSAwLjYyNSAtNi40MjE4NzUgMC41OTM3NSAtNS41NjI1IEwgMS42NTYyNSAtNS41NjI1IEMgMS42ODc1IC02LjEyNSAxLjc2NTYyNSAtNi40ODQzNzUgMS45MDYyNSAtNi43NSBDIDIuMTg3NSAtNy4yNjU2MjUgMi43MzQzNzUgLTcuNTc4MTI1IDMuMzc1IC03LjU3ODEyNSBDIDQuMzI4MTI1IC03LjU3ODEyNSA1LjA0Njg3NSAtNi45MDYyNSA1LjA0Njg3NSAtNS45ODQzNzUgQyA1LjA0Njg3NSAtNS4zMTI1IDQuNjU2MjUgLTQuNzM0Mzc1IDMuOTA2MjUgLTQuMzEyNSBMIDIuNzk2ODc1IC0zLjY4NzUgQyAxLjAxNTYyNSAtMi42NzE4NzUgMC41IC0xLjg3NSAwLjQwNjI1IDAgTCA2LjA3ODEyNSAwIFogTSA2LjA3ODEyNSAtMS4wNDY4NzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTEyIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA2LjQyMTg3NSAtMC41OTM3NSBDIDYuMzEyNSAtMC41NjI1IDYuMjY1NjI1IC0wLjU2MjUgNi4yMDMxMjUgLTAuNTYyNSBDIDUuODU5Mzc1IC0wLjU2MjUgNS42NTYyNSAtMC43NSA1LjY1NjI1IC0xLjA2MjUgTCA1LjY1NjI1IC00Ljc1IEMgNS42NTYyNSAtNS44NzUgNC44NDM3NSAtNi40Njg3NSAzLjI5Njg3NSAtNi40Njg3NSBDIDIuMzkwNjI1IC02LjQ2ODc1IDEuNjI1IC02LjIwMzEyNSAxLjIxODc1IC01LjczNDM3NSBDIDAuOTIxODc1IC01LjQwNjI1IDAuNzk2ODc1IC01LjA0Njg3NSAwLjc4MTI1IC00LjQyMTg3NSBMIDEuNzgxMjUgLTQuNDIxODc1IEMgMS44NzUgLTUuMjAzMTI1IDIuMzI4MTI1IC01LjU0Njg3NSAzLjI2NTYyNSAtNS41NDY4NzUgQyA0LjE1NjI1IC01LjU0Njg3NSA0LjY3MTg3NSAtNS4yMDMxMjUgNC42NzE4NzUgLTQuNjA5Mzc1IEwgNC42NzE4NzUgLTQuMzQzNzUgQyA0LjY3MTg3NSAtMy45MjE4NzUgNC40MjE4NzUgLTMuNzUgMy42MjUgLTMuNjQwNjI1IEMgMi4yMDMxMjUgLTMuNDY4NzUgMS45ODQzNzUgLTMuNDIxODc1IDEuNjA5Mzc1IC0zLjI2NTYyNSBDIDAuODc1IC0yLjk2ODc1IDAuNSAtMi40MDYyNSAwLjUgLTEuNTc4MTI1IEMgMC41IC0wLjQzNzUgMS4yOTY4NzUgMC4yODEyNSAyLjU2MjUgMC4yODEyNSBDIDMuMzU5Mzc1IDAuMjgxMjUgNCAwIDQuNzAzMTI1IC0wLjY0MDYyNSBDIDQuNzgxMjUgLTAuMDE1NjI1IDUuMDkzNzUgMC4yODEyNSA1LjczNDM3NSAwLjI4MTI1IEMgNS45Mzc1IDAuMjgxMjUgNi4wOTM3NSAwLjI1IDYuNDIxODc1IDAuMTcxODc1IFogTSA0LjY3MTg3NSAtMS45ODQzNzUgQyA0LjY3MTg3NSAtMS42NDA2MjUgNC41NzgxMjUgLTEuNDM3NSA0LjI2NTYyNSAtMS4xNTYyNSBDIDMuODU5Mzc1IC0wLjc5Njg3NSAzLjM3NSAtMC41OTM3NSAyLjc4MTI1IC0wLjU5Mzc1IEMgMiAtMC41OTM3NSAxLjU0Njg3NSAtMC45Njg3NSAxLjU0Njg3NSAtMS42MDkzNzUgQyAxLjU0Njg3NSAtMi4yNjU2MjUgMS45ODQzNzUgLTIuNjA5Mzc1IDMuMDYyNSAtMi43NjU2MjUgQyA0LjEwOTM3NSAtMi45MDYyNSA0LjMyODEyNSAtMi45NTMxMjUgNC42NzE4NzUgLTMuMTA5Mzc1IFogTSA0LjY3MTg3NSAtMS45ODQzNzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTEzIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAzLjkyMTg3NSAtMi4wNDY4NzUgTCAzLjkyMTg3NSAwIEwgNC45ODQzNzUgMCBMIDQuOTg0Mzc1IC0yLjA0Njg3NSBMIDYuMjM0Mzc1IC0yLjA0Njg3NSBMIDYuMjM0Mzc1IC0yLjk4NDM3NSBMIDQuOTg0Mzc1IC0yLjk4NDM3NSBMIDQuOTg0Mzc1IC04LjUxNTYyNSBMIDQuMjAzMTI1IC04LjUxNTYyNSBMIDAuMzQzNzUgLTMuMTU2MjUgTCAwLjM0Mzc1IC0yLjA0Njg3NSBaIE0gMy45MjE4NzUgLTIuOTg0Mzc1IEwgMS4yNjU2MjUgLTIuOTg0Mzc1IEwgMy45MjE4NzUgLTYuNzAzMTI1IFogTSAzLjkyMTg3NSAtMi45ODQzNzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTE0Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAzLjEwOTM3NSAtNi4wNjI1IEwgMy4xMDkzNzUgMCBMIDQuMTU2MjUgMCBMIDQuMTU2MjUgLTguNTE1NjI1IEwgMy40Njg3NSAtOC41MTU2MjUgQyAzLjA5Mzc1IC03LjIwMzEyNSAyLjg1OTM3NSAtNy4wMTU2MjUgMS4yMTg3NSAtNi44MTI1IEwgMS4yMTg3NSAtNi4wNjI1IFogTSAzLjEwOTM3NSAtNi4wNjI1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC0xNSI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gNS45Njg3NSAtNi4yODEyNSBDIDUuNzY1NjI1IC03LjY4NzUgNC44NTkzNzUgLTguNTE1NjI1IDMuNTYyNSAtOC41MTU2MjUgQyAyLjYyNSAtOC41MTU2MjUgMS43ODEyNSAtOC4wNDY4NzUgMS4yODEyNSAtNy4yOTY4NzUgQyAwLjc1IC02LjQ2ODc1IDAuNTE1NjI1IC01LjQyMTg3NSAwLjUxNTYyNSAtMy44NzUgQyAwLjUxNTYyNSAtMi40NTMxMjUgMC43MzQzNzUgLTEuNTMxMjUgMS4yMzQzNzUgLTAuNzgxMjUgQyAxLjY4NzUgLTAuMDkzNzUgMi40Mzc1IDAuMjgxMjUgMy4zNzUgMC4yODEyNSBDIDQuOTg0Mzc1IDAuMjgxMjUgNi4xNTYyNSAtMC45MjE4NzUgNi4xNTYyNSAtMi41OTM3NSBDIDYuMTU2MjUgLTQuMTcxODc1IDUuMDc4MTI1IC01LjI5Njg3NSAzLjU0Njg3NSAtNS4yOTY4NzUgQyAyLjcxODc1IC01LjI5Njg3NSAyLjA0Njg3NSAtNC45Njg3NSAxLjU5Mzc1IC00LjM0Mzc1IEMgMS42MDkzNzUgLTYuNDIxODc1IDIuMjgxMjUgLTcuNTc4MTI1IDMuNDg0Mzc1IC03LjU3ODEyNSBDIDQuMjM0Mzc1IC03LjU3ODEyNSA0Ljc1IC03LjEwOTM3NSA0LjkyMTg3NSAtNi4yODEyNSBaIE0gMy40MjE4NzUgLTQuMzU5Mzc1IEMgNC40Mzc1IC00LjM1OTM3NSA1LjA3ODEyNSAtMy42NDA2MjUgNS4wNzgxMjUgLTIuNTE1NjI1IEMgNS4wNzgxMjUgLTEuNDM3NSA0LjM1OTM3NSAtMC42NTYyNSAzLjM5MDYyNSAtMC42NTYyNSBDIDIuNDA2MjUgLTAuNjU2MjUgMS42NTYyNSAtMS40Njg3NSAxLjY1NjI1IC0yLjU2MjUgQyAxLjY1NjI1IC0zLjYyNSAyLjM3NSAtNC4zNTkzNzUgMy40MjE4NzUgLTQuMzU5Mzc1IFogTSAzLjQyMTg3NSAtNC4zNTkzNzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTE2Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA1LjcxODc1IC04LjUxNTYyNSBMIDEuMzEyNSAtOC41MTU2MjUgTCAwLjY4NzUgLTMuODc1IEwgMS42NTYyNSAtMy44NzUgQyAyLjE0MDYyNSAtNC40Njg3NSAyLjU2MjUgLTQuNjcxODc1IDMuMjE4NzUgLTQuNjcxODc1IEMgNC4zNTkzNzUgLTQuNjcxODc1IDUuMDc4MTI1IC0zLjg5MDYyNSA1LjA3ODEyNSAtMi42MjUgQyA1LjA3ODEyNSAtMS40MDYyNSA0LjM3NSAtMC42NTYyNSAzLjIxODc1IC0wLjY1NjI1IEMgMi4yOTY4NzUgLTAuNjU2MjUgMS43MzQzNzUgLTEuMTI1IDEuNDY4NzUgLTIuMDkzNzUgTCAwLjQyMTg3NSAtMi4wOTM3NSBDIDAuNTYyNSAtMS4zOTA2MjUgMC42ODc1IC0xLjA2MjUgMC45Mzc1IC0wLjc1IEMgMS40MjE4NzUgLTAuMDkzNzUgMi4yODEyNSAwLjI4MTI1IDMuMjM0Mzc1IDAuMjgxMjUgQyA0Ljk1MzEyNSAwLjI4MTI1IDYuMTU2MjUgLTAuOTY4NzUgNi4xNTYyNSAtMi43NjU2MjUgQyA2LjE1NjI1IC00LjQ1MzEyNSA1LjA0Njg3NSAtNS42MDkzNzUgMy40MDYyNSAtNS42MDkzNzUgQyAyLjgxMjUgLTUuNjA5Mzc1IDIuMzI4MTI1IC01LjQ1MzEyNSAxLjg0Mzc1IC01LjA5Mzc1IEwgMi4xNzE4NzUgLTcuNDY4NzUgTCA1LjcxODc1IC03LjQ2ODc1IFogTSA1LjcxODc1IC04LjUxNTYyNSAiLz4KPC9zeW1ib2w+CjwvZz4KPC9kZWZzPgo8ZyBpZD0ic3VyZmFjZTEiPgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNTA0IiBoZWlnaHQ9IjUwNCIgc3R5bGU9ImZpbGw6cmdiKDEwMCUsMTAwJSwxMDAlKTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTsiLz4KPHBhdGggc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvO2ZpbGw6cmdiKDAlLDQyLjM1Mjk0MSUsNzYuMDc4NDMxJSk7ZmlsbC1vcGFjaXR5OjAuNzAxOTYxO3N0cm9rZS13aWR0aDowLjc1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2U6cmdiKDAlLDAlLDAlKTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTSAxMzUuMzMyMDMxIDQwNy41NTQ2ODggTCAyMTMuMTA5Mzc1IDQwNy41NTQ2ODggTCAyMTMuMTA5Mzc1IDMyOS43NzczNDQgTCAxMzUuMzMyMDMxIDMyOS43NzczNDQgWiBNIDEzNS4zMzIwMzEgNDA3LjU1NDY4OCAiLz4KPHBhdGggc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvO2ZpbGw6cmdiKDAlLDQyLjM1Mjk0MSUsNzYuMDc4NDMxJSk7ZmlsbC1vcGFjaXR5OjAuNzAxOTYxO3N0cm9rZS13aWR0aDowLjc1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2U6cmdiKDAlLDAlLDAlKTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTSAxMzUuMzMyMDMxIDMyOS43NzczNDQgTCAyMTMuMTA5Mzc1IDMyOS43NzczNDQgTCAyMTMuMTA5Mzc1IDI1MiBMIDEzNS4zMzIwMzEgMjUyIFogTSAxMzUuMzMyMDMxIDMyOS43NzczNDQgIi8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw0Mi4zNTI5NDElLDc2LjA3ODQzMSUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMTM1LjMzMjAzMSAyNTIgTCAyMTMuMTA5Mzc1IDI1MiBMIDIxMy4xMDkzNzUgMTc0LjIyMjY1NiBMIDEzNS4zMzIwMzEgMTc0LjIyMjY1NiBaIE0gMTM1LjMzMjAzMSAyNTIgIi8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw0Mi4zNTI5NDElLDc2LjA3ODQzMSUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMTM1LjMzMjAzMSAxNzQuMjIyNjU2IEwgMjEzLjEwOTM3NSAxNzQuMjIyNjU2IEwgMjEzLjEwOTM3NSA5Ni40NDUzMTIgTCAxMzUuMzMyMDMxIDk2LjQ0NTMxMiBaIE0gMTM1LjMzMjAzMSAxNzQuMjIyNjU2ICIvPgo8cGF0aCBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoNzEuMzcyNTQ5JSwxMC4xOTYwNzglLDMxLjc2NDcwNiUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMjEzLjEwOTM3NSA0MDcuNTU0Njg4IEwgMjkwLjg4NjcxOSA0MDcuNTU0Njg4IEwgMjkwLjg4NjcxOSAzMjkuNzc3MzQ0IEwgMjEzLjEwOTM3NSAzMjkuNzc3MzQ0IFogTSAyMTMuMTA5Mzc1IDQwNy41NTQ2ODggIi8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYig3MS4zNzI1NDklLDEwLjE5NjA3OCUsMzEuNzY0NzA2JSk7ZmlsbC1vcGFjaXR5OjAuNzAxOTYxO3N0cm9rZS13aWR0aDowLjc1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2U6cmdiKDAlLDAlLDAlKTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTSAyMTMuMTA5Mzc1IDMyOS43NzczNDQgTCAyOTAuODg2NzE5IDMyOS43NzczNDQgTCAyOTAuODg2NzE5IDI1MiBMIDIxMy4xMDkzNzUgMjUyIFogTSAyMTMuMTA5Mzc1IDMyOS43NzczNDQgIi8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw0Mi4zNTI5NDElLDc2LjA3ODQzMSUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMjEzLjEwOTM3NSAyNTIgTCAyOTAuODg2NzE5IDI1MiBMIDI5MC44ODY3MTkgMTc0LjIyMjY1NiBMIDIxMy4xMDkzNzUgMTc0LjIyMjY1NiBaIE0gMjEzLjEwOTM3NSAyNTIgIi8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw0Mi4zNTI5NDElLDc2LjA3ODQzMSUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMjEzLjEwOTM3NSAxNzQuMjIyNjU2IEwgMjkwLjg4NjcxOSAxNzQuMjIyNjU2IEwgMjkwLjg4NjcxOSA5Ni40NDUzMTIgTCAyMTMuMTA5Mzc1IDk2LjQ0NTMxMiBaIE0gMjEzLjEwOTM3NSAxNzQuMjIyNjU2ICIvPgo8cGF0aCBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoNzEuMzcyNTQ5JSwxMC4xOTYwNzglLDMxLjc2NDcwNiUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMjkwLjg5MDYyNSA0MDcuNTU0Njg4IEwgMzY4LjY2Nzk2OSA0MDcuNTU0Njg4IEwgMzY4LjY2Nzk2OSAzMjkuNzc3MzQ0IEwgMjkwLjg5MDYyNSAzMjkuNzc3MzQ0IFogTSAyOTAuODkwNjI1IDQwNy41NTQ2ODggIi8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw0Mi4zNTI5NDElLDc2LjA3ODQzMSUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMjkwLjg5MDYyNSAzMjkuNzc3MzQ0IEwgMzY4LjY2Nzk2OSAzMjkuNzc3MzQ0IEwgMzY4LjY2Nzk2OSAyNTIgTCAyOTAuODkwNjI1IDI1MiBaIE0gMjkwLjg5MDYyNSAzMjkuNzc3MzQ0ICIvPgo8cGF0aCBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoNzEuMzcyNTQ5JSwxMC4xOTYwNzglLDMxLjc2NDcwNiUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMjkwLjg5MDYyNSAyNTIgTCAzNjguNjY3OTY5IDI1MiBMIDM2OC42Njc5NjkgMTc0LjIyMjY1NiBMIDI5MC44OTA2MjUgMTc0LjIyMjY1NiBaIE0gMjkwLjg5MDYyNSAyNTIgIi8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw0Mi4zNTI5NDElLDc2LjA3ODQzMSUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMjkwLjg5MDYyNSAxNzQuMjIyNjU2IEwgMzY4LjY2Nzk2OSAxNzQuMjIyNjU2IEwgMzY4LjY2Nzk2OSA5Ni40NDUzMTIgTCAyOTAuODkwNjI1IDk2LjQ0NTMxMiBaIE0gMjkwLjg5MDYyNSAxNzQuMjIyNjU2ICIvPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEiIHg9IjE2NC44ODY3MTkiIHk9IjczLjEwOTM3NSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0yIiB4PSIxNzAuODg2NzY1IiB5PSI3My4xMDkzNzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMyIgeD0iMTc3LjU1ODgwNyIgeT0iNzMuMTA5Mzc1Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSIxNzAuODg2NzE5IiB5PSI0MzUuMDA3ODEyIi8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xIiB4PSIyMjkuNjYwMTU2IiB5PSI3My4xMDkzNzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtNSIgeD0iMjM1LjY2MDIwMiIgeT0iNzMuMTA5Mzc1Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTYiIHg9IjI0NS42NTYyNjUiIHk9IjczLjEwOTM3NSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC03IiB4PSIyNTIuMzI4MzA4IiB5PSI3My4xMDkzNzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtOCIgeD0iMjU4LjMyODM1NCIgeT0iNzMuMTA5Mzc1Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTkiIHg9IjI2MC45OTIzNzEiIHk9IjczLjEwOTM3NSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMCIgeD0iMjY3LjY2NDQxMyIgeT0iNzMuMTA5Mzc1Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMSIgeD0iMjQ1LjMyODEyNSIgeT0iNDM1LjAwNzgxMiIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSIyNTIuMDAwMTY4IiB5PSI0MzUuMDA3ODEyIi8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMiIgeD0iMzE5Ljc2OTUzMSIgeT0iNzMuMTA5Mzc1Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEwIiB4PSIzMjYuNDQxNTc0IiB5PSI3My4xMDkzNzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMiIgeD0iMzMzLjExMzYxNyIgeT0iNzMuMTA5Mzc1Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMSIgeD0iMzIzLjEwNTQ2OSIgeT0iNDM1LjAwNzgxMiIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSIzMjkuNzc3NTEyIiB5PSI0MzUuMDA3ODEyIi8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMSIgeD0iMzkyIiB5PSIzNzIuOTI1NzgxIi8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMyIgeD0iMTA1LjMyODEyNSIgeT0iMzcyLjkyNTc4MSIvPgo8L2c+CjxnIHN0eWxlPSJmaWxsOnJnYigwJSwwJSwwJSk7ZmlsbC1vcGFjaXR5OjE7Ij4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMTQiIHg9IjM5MiIgeT0iMjk1LjE0ODQzOCIvPgo8L2c+CjxnIHN0eWxlPSJmaWxsOnJnYigwJSwwJSwwJSk7ZmlsbC1vcGFjaXR5OjE7Ij4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMTQiIHg9Ijk4LjY1NjI1IiB5PSIyOTUuMDA3ODEyIi8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTE1IiB4PSIxMDUuMzI4MjkzIiB5PSIyOTUuMDA3ODEyIi8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xNCIgeD0iMzkyIiB5PSIyMTcuMzY3MTg4Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xNCIgeD0iOTguNjU2MjUiIHk9IjIxNy4yMjY1NjIiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMTUiIHg9IjEwNS4zMjgyOTMiIHk9IjIxNy4yMjY1NjIiLz4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTQiIHg9IjM5MiIgeT0iMTM5LjQ0OTIxOSIvPgo8L2c+CjxnIHN0eWxlPSJmaWxsOnJnYigwJSwwJSwwJSk7ZmlsbC1vcGFjaXR5OjE7Ij4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMTQiIHg9IjkxLjk4NDM3NSIgeT0iMTM5LjQ0OTIxOSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xNSIgeD0iOTguNjU2NDE4IiB5PSIxMzkuNDQ5MjE5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTE2IiB4PSIxMDUuMzI4NDYxIiB5PSIxMzkuNDQ5MjE5Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMyIgeD0iMzg1LjMyODEyNSIgeT0iNDM1LjAwNzgxMiIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSIzOTIuMDAwMTY4IiB5PSI0MzUuMDA3ODEyIi8+CjwvZz4KPC9nPgo8L3N2Zz4K" alt="plot of chunk unnamed-chunk-10"/></p>
+
+<pre><code>##     sex smoking age   
+## 165   1       1   1  0
+## 16    1       1   0  1
+## 16    1       0   1  1
+## 4     1       0   0  2
+##       0      20  20 40
+</code></pre>
+
+<p>According to the <code>mice::md.pattern()</code> documentation:</p>
+
+<blockquote>
+<p>A matrix with ‘ncol(x)+1’ columns, in which each row corresponds
+to a missing data pattern (1=observed, 0=missing).  Rows and
+columns are sorted in increasing amounts of missing information.
+The last column and row contain row and column counts,
+respectively.</p>
+</blockquote>
+
+<pre><code class="r">sum(is.na(samples.mis$age) &amp; is.na(samples.mis$smoking))
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+<pre><code class="r">sum(is.na(samples.mis$age) &amp; !is.na(samples.mis$smoking))
+</code></pre>
+
+<pre><code>## [1] 16
+</code></pre>
+
+<pre><code class="r">sum(!is.na(samples.mis$age) &amp; is.na(samples.mis$smoking))
+</code></pre>
+
+<pre><code>## [1] 16
+</code></pre>
+
+<pre><code class="r">sum(!is.na(samples.mis$age) &amp; !is.na(samples.mis$smoking))
+</code></pre>
+
+<pre><code>## [1] 165
+</code></pre>
+
+<h2>Missing completely at random</h2>
+
+<p>To keep things simple for now,
+we&#39;ll analyse data with only one variable (smoking status)
+missing values.  Well remove 20% of the values.</p>
+
+<pre><code class="r">pct.missing &lt;- 0.2
+</code></pre>
+
+<p>The way we remove the values, data should be &#39;missing completely at random&#39;.</p>
+
+<pre><code class="r">samples.mcar &lt;- samples
+missing.idx &lt;- sample(1:nrow(samples.mcar),
+                      floor(pct.missing*nrow(samples.mcar)))
+samples.mcar$smoking[missing.idx] &lt;- NA
+</code></pre>
+
+<p>Have a look at the missingness patterns.</p>
+
+<pre><code class="r">table(samples.mcar$smoking, useNA=&quot;a&quot;)
+</code></pre>
+
+<pre><code>## 
+## current  former   never    &lt;NA&gt; 
+##      20       0     141      40
+</code></pre>
+
+<pre><code class="r">md.pattern(data.frame(samples.mcar))
+</code></pre>
+
+<p><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNTA0cHQiIGhlaWdodD0iNTA0cHQiIHZpZXdCb3g9IjAgMCA1MDQgNTA0IiB2ZXJzaW9uPSIxLjEiPgo8ZGVmcz4KPGc+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtMCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9IiIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC0xIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA2LjQyMTg3NSAtMC41OTM3NSBDIDYuMzEyNSAtMC41NjI1IDYuMjY1NjI1IC0wLjU2MjUgNi4yMDMxMjUgLTAuNTYyNSBDIDUuODU5Mzc1IC0wLjU2MjUgNS42NTYyNSAtMC43NSA1LjY1NjI1IC0xLjA2MjUgTCA1LjY1NjI1IC00Ljc1IEMgNS42NTYyNSAtNS44NzUgNC44NDM3NSAtNi40Njg3NSAzLjI5Njg3NSAtNi40Njg3NSBDIDIuMzkwNjI1IC02LjQ2ODc1IDEuNjI1IC02LjIwMzEyNSAxLjIxODc1IC01LjczNDM3NSBDIDAuOTIxODc1IC01LjQwNjI1IDAuNzk2ODc1IC01LjA0Njg3NSAwLjc4MTI1IC00LjQyMTg3NSBMIDEuNzgxMjUgLTQuNDIxODc1IEMgMS44NzUgLTUuMjAzMTI1IDIuMzI4MTI1IC01LjU0Njg3NSAzLjI2NTYyNSAtNS41NDY4NzUgQyA0LjE1NjI1IC01LjU0Njg3NSA0LjY3MTg3NSAtNS4yMDMxMjUgNC42NzE4NzUgLTQuNjA5Mzc1IEwgNC42NzE4NzUgLTQuMzQzNzUgQyA0LjY3MTg3NSAtMy45MjE4NzUgNC40MjE4NzUgLTMuNzUgMy42MjUgLTMuNjQwNjI1IEMgMi4yMDMxMjUgLTMuNDY4NzUgMS45ODQzNzUgLTMuNDIxODc1IDEuNjA5Mzc1IC0zLjI2NTYyNSBDIDAuODc1IC0yLjk2ODc1IDAuNSAtMi40MDYyNSAwLjUgLTEuNTc4MTI1IEMgMC41IC0wLjQzNzUgMS4yOTY4NzUgMC4yODEyNSAyLjU2MjUgMC4yODEyNSBDIDMuMzU5Mzc1IDAuMjgxMjUgNCAwIDQuNzAzMTI1IC0wLjY0MDYyNSBDIDQuNzgxMjUgLTAuMDE1NjI1IDUuMDkzNzUgMC4yODEyNSA1LjczNDM3NSAwLjI4MTI1IEMgNS45Mzc1IDAuMjgxMjUgNi4wOTM3NSAwLjI1IDYuNDIxODc1IDAuMTcxODc1IFogTSA0LjY3MTg3NSAtMS45ODQzNzUgQyA0LjY3MTg3NSAtMS42NDA2MjUgNC41NzgxMjUgLTEuNDM3NSA0LjI2NTYyNSAtMS4xNTYyNSBDIDMuODU5Mzc1IC0wLjc5Njg3NSAzLjM3NSAtMC41OTM3NSAyLjc4MTI1IC0wLjU5Mzc1IEMgMiAtMC41OTM3NSAxLjU0Njg3NSAtMC45Njg3NSAxLjU0Njg3NSAtMS42MDkzNzUgQyAxLjU0Njg3NSAtMi4yNjU2MjUgMS45ODQzNzUgLTIuNjA5Mzc1IDMuMDYyNSAtMi43NjU2MjUgQyA0LjEwOTM3NSAtMi45MDYyNSA0LjMyODEyNSAtMi45NTMxMjUgNC42NzE4NzUgLTMuMTA5Mzc1IFogTSA0LjY3MTg3NSAtMS45ODQzNzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTIiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDQuOTM3NSAtNi4yODEyNSBMIDQuOTM3NSAtNS4zNzUgQyA0LjQzNzUgLTYuMTI1IDMuODI4MTI1IC02LjQ2ODc1IDMuMDMxMjUgLTYuNDY4NzUgQyAxLjQyMTg3NSAtNi40Njg3NSAwLjM0Mzc1IC01LjA3ODEyNSAwLjM0Mzc1IC0zLjAzMTI1IEMgMC4zNDM3NSAtMiAwLjYyNSAtMS4xNTYyNSAxLjE0MDYyNSAtMC41NjI1IEMgMS42MDkzNzUgLTAuMDMxMjUgMi4yODEyNSAwLjI4MTI1IDIuOTM3NSAwLjI4MTI1IEMgMy43MzQzNzUgMC4yODEyNSA0LjI4MTI1IC0wLjA2MjUgNC44NDM3NSAtMC44NTkzNzUgTCA0Ljg0Mzc1IC0wLjUzMTI1IEMgNC44NDM3NSAwLjMyODEyNSA0LjczNDM3NSAwLjg0Mzc1IDQuNDg0Mzc1IDEuMTg3NSBDIDQuMjE4NzUgMS41NjI1IDMuNzAzMTI1IDEuNzgxMjUgMy4wOTM3NSAxLjc4MTI1IEMgMi42NDA2MjUgMS43ODEyNSAyLjIzNDM3NSAxLjY1NjI1IDEuOTUzMTI1IDEuNDM3NSBDIDEuNzM0Mzc1IDEuMjY1NjI1IDEuNjI1IDEuMDkzNzUgMS41NzgxMjUgMC43MTg3NSBMIDAuNTQ2ODc1IDAuNzE4NzUgQyAwLjY1NjI1IDEuOTA2MjUgMS41NzgxMjUgMi42MDkzNzUgMy4wNjI1IDIuNjA5Mzc1IEMgNCAyLjYwOTM3NSA0Ljc5Njg3NSAyLjMxMjUgNS4yMDMxMjUgMS44MTI1IEMgNS42ODc1IDEuMjM0Mzc1IDUuODc1IDAuNDM3NSA1Ljg3NSAtMS4wMzEyNSBMIDUuODc1IC02LjI4MTI1IFogTSAzLjEyNSAtNS41NDY4NzUgQyA0LjIxODc1IC01LjU0Njg3NSA0Ljg0Mzc1IC00LjYyNSA0Ljg0Mzc1IC0zLjA2MjUgQyA0Ljg0Mzc1IC0xLjU2MjUgNC4yMDMxMjUgLTAuNjQwNjI1IDMuMTQwNjI1IC0wLjY0MDYyNSBDIDIuMDQ2ODc1IC0wLjY0MDYyNSAxLjM5MDYyNSAtMS41NzgxMjUgMS4zOTA2MjUgLTMuMDkzNzUgQyAxLjM5MDYyNSAtNC42MDkzNzUgMi4wNjI1IC01LjU0Njg3NSAzLjEyNSAtNS41NDY4NzUgWiBNIDMuMTI1IC01LjU0Njg3NSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtMyI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gNi4xNTYyNSAtMi44MTI1IEMgNi4xNTYyNSAtMy43NjU2MjUgNi4wNzgxMjUgLTQuMzQzNzUgNS45MDYyNSAtNC44MTI1IEMgNS41IC01Ljg0Mzc1IDQuNTMxMjUgLTYuNDY4NzUgMy4zNTkzNzUgLTYuNDY4NzUgQyAxLjYwOTM3NSAtNi40Njg3NSAwLjQ4NDM3NSAtNS4xMjUgMC40ODQzNzUgLTMuMDYyNSBDIDAuNDg0Mzc1IC0xIDEuNTc4MTI1IDAuMjgxMjUgMy4zNDM3NSAwLjI4MTI1IEMgNC43ODEyNSAwLjI4MTI1IDUuNzY1NjI1IC0wLjU0Njg3NSA2LjAzMTI1IC0xLjkwNjI1IEwgNS4wMTU2MjUgLTEuOTA2MjUgQyA0LjczNDM3NSAtMS4wNzgxMjUgNC4xNzE4NzUgLTAuNjQwNjI1IDMuMzc1IC0wLjY0MDYyNSBDIDIuNzM0Mzc1IC0wLjY0MDYyNSAyLjIwMzEyNSAtMC45Mzc1IDEuODU5Mzc1IC0xLjQ2ODc1IEMgMS42MjUgLTEuODI4MTI1IDEuNTMxMjUgLTIuMTg3NSAxLjUzMTI1IC0yLjgxMjUgWiBNIDEuNTQ2ODc1IC0zLjYyNSBDIDEuNjI1IC00Ljc4MTI1IDIuMzQzNzUgLTUuNTQ2ODc1IDMuMzQzNzUgLTUuNTQ2ODc1IEMgNC4zMjgxMjUgLTUuNTQ2ODc1IDUuMDkzNzUgLTQuNzM0Mzc1IDUuMDkzNzUgLTMuNzAzMTI1IEMgNS4wOTM3NSAtMy42NzE4NzUgNS4wOTM3NSAtMy42NDA2MjUgNS4wNzgxMjUgLTMuNjI1IFogTSAxLjU0Njg3NSAtMy42MjUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTQiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDMuMjk2ODc1IC04LjUxNTYyNSBDIDIuNTE1NjI1IC04LjUxNTYyNSAxLjc4MTI1IC04LjE1NjI1IDEuMzQzNzUgLTcuNTc4MTI1IEMgMC43OTY4NzUgLTYuODI4MTI1IDAuNTE1NjI1IC01LjY4NzUgMC41MTU2MjUgLTQuMTA5Mzc1IEMgMC41MTU2MjUgLTEuMjUgMS40Njg3NSAwLjI4MTI1IDMuMjk2ODc1IDAuMjgxMjUgQyA1LjA5Mzc1IDAuMjgxMjUgNi4wNzgxMjUgLTEuMjUgNi4wNzgxMjUgLTQuMDQ2ODc1IEMgNi4wNzgxMjUgLTUuNzAzMTI1IDUuODEyNSAtNi43OTY4NzUgNS4yNSAtNy41NzgxMjUgQyA0LjgxMjUgLTguMTcxODc1IDQuMTA5Mzc1IC04LjUxNTYyNSAzLjI5Njg3NSAtOC41MTU2MjUgWiBNIDMuMjk2ODc1IC03LjU3ODEyNSBDIDQuNDM3NSAtNy41NzgxMjUgNSAtNi40MjE4NzUgNSAtNC4xNDA2MjUgQyA1IC0xLjczNDM3NSA0LjQ1MzEyNSAtMC41OTM3NSAzLjI4MTI1IC0wLjU5Mzc1IEMgMi4xNTYyNSAtMC41OTM3NSAxLjU5Mzc1IC0xLjc4MTI1IDEuNTkzNzUgLTQuMTA5Mzc1IEMgMS41OTM3NSAtNi40Mzc1IDIuMTU2MjUgLTcuNTc4MTI1IDMuMjk2ODc1IC03LjU3ODEyNSBaIE0gMy4yOTY4NzUgLTcuNTc4MTI1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC01Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA1LjI1IC00LjUzMTI1IEMgNS4yNSAtNS43NjU2MjUgNC40MjE4NzUgLTYuNDY4NzUgMi45Njg3NSAtNi40Njg3NSBDIDEuNTE1NjI1IC02LjQ2ODc1IDAuNTYyNSAtNS43MTg3NSAwLjU2MjUgLTQuNTQ2ODc1IEMgMC41NjI1IC0zLjU2MjUgMS4wNjI1IC0zLjA5Mzc1IDIuNTYyNSAtMi43MzQzNzUgTCAzLjQ4NDM3NSAtMi41MTU2MjUgQyA0LjE4NzUgLTIuMzQzNzUgNC40Njg3NSAtMi4wOTM3NSA0LjQ2ODc1IC0xLjYyNSBDIDQuNDY4NzUgLTEuMDQ2ODc1IDMuODc1IC0wLjY0MDYyNSAzIC0wLjY0MDYyNSBDIDIuNDUzMTI1IC0wLjY0MDYyNSAyIC0wLjc5Njg3NSAxLjc1IC0xLjA2MjUgQyAxLjU5Mzc1IC0xLjI1IDEuNTMxMjUgLTEuNDIxODc1IDEuNDY4NzUgLTEuODc1IEwgMC40MDYyNSAtMS44NzUgQyAwLjQ1MzEyNSAtMC40MjE4NzUgMS4yNjU2MjUgMC4yODEyNSAyLjkyMTg3NSAwLjI4MTI1IEMgNC41IDAuMjgxMjUgNS41MTU2MjUgLTAuNSA1LjUxNTYyNSAtMS43MTg3NSBDIDUuNTE1NjI1IC0yLjY1NjI1IDQuOTg0Mzc1IC0zLjE3MTg3NSAzLjczNDM3NSAtMy40Njg3NSBMIDIuNzY1NjI1IC0zLjcwMzEyNSBDIDEuOTUzMTI1IC0zLjg5MDYyNSAxLjYwOTM3NSAtNC4xNTYyNSAxLjYwOTM3NSAtNC41OTM3NSBDIDEuNjA5Mzc1IC01LjE3MTg3NSAyLjEyNSAtNS41NDY4NzUgMi45Mzc1IC01LjU0Njg3NSBDIDMuNzUgLTUuNTQ2ODc1IDQuMTcxODc1IC01LjIwMzEyNSA0LjIwMzEyNSAtNC41MzEyNSBaIE0gNS4yNSAtNC41MzEyNSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtNiI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gMy41IC0zLjI1IEwgNS42MDkzNzUgLTYuMjgxMjUgTCA0LjQ4NDM3NSAtNi4yODEyNSBMIDIuOTY4NzUgLTQuMDE1NjI1IEwgMS40Njg3NSAtNi4yODEyNSBMIDAuMzI4MTI1IC02LjI4MTI1IEwgMi40MjE4NzUgLTMuMjAzMTI1IEwgMC4yMDMxMjUgMCBMIDEuMzQzNzUgMCBMIDIuOTM3NSAtMi40MDYyNSBMIDQuNTE1NjI1IDAgTCA1LjY3MTg3NSAwIFogTSAzLjUgLTMuMjUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTciPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDAuODQzNzUgLTYuMjgxMjUgTCAwLjg0Mzc1IDAgTCAxLjg0Mzc1IDAgTCAxLjg0Mzc1IC0zLjk1MzEyNSBDIDEuODQzNzUgLTQuODU5Mzc1IDIuNTE1NjI1IC01LjU5Mzc1IDMuMzI4MTI1IC01LjU5Mzc1IEMgNC4wNjI1IC01LjU5Mzc1IDQuNDg0Mzc1IC01LjE0MDYyNSA0LjQ4NDM3NSAtNC4zMjgxMjUgTCA0LjQ4NDM3NSAwIEwgNS41IDAgTCA1LjUgLTMuOTUzMTI1IEMgNS41IC00Ljg1OTM3NSA2LjE1NjI1IC01LjU5Mzc1IDYuOTY4NzUgLTUuNTkzNzUgQyA3LjcwMzEyNSAtNS41OTM3NSA4LjE0MDYyNSAtNS4xMjUgOC4xNDA2MjUgLTQuMzI4MTI1IEwgOC4xNDA2MjUgMCBMIDkuMTQwNjI1IDAgTCA5LjE0MDYyNSAtNC43MTg3NSBDIDkuMTQwNjI1IC01Ljg0Mzc1IDguNSAtNi40Njg3NSA3LjMxMjUgLTYuNDY4NzUgQyA2LjQ4NDM3NSAtNi40Njg3NSA1Ljk2ODc1IC02LjIxODc1IDUuMzkwNjI1IC01LjUxNTYyNSBDIDUuMDE1NjI1IC02LjE4NzUgNC41MTU2MjUgLTYuNDY4NzUgMy43MDMxMjUgLTYuNDY4NzUgQyAyLjg1OTM3NSAtNi40Njg3NSAyLjI5Njg3NSAtNi4xNTYyNSAxLjc2NTYyNSAtNS40MDYyNSBMIDEuNzY1NjI1IC02LjI4MTI1IFogTSAwLjg0Mzc1IC02LjI4MTI1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC04Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAzLjI2NTYyNSAtNi40Njg3NSBDIDEuNSAtNi40Njg3NSAwLjQzNzUgLTUuMjAzMTI1IDAuNDM3NSAtMy4wOTM3NSBDIDAuNDM3NSAtMC45ODQzNzUgMS40ODQzNzUgMC4yODEyNSAzLjI4MTI1IDAuMjgxMjUgQyA1LjA0Njg3NSAwLjI4MTI1IDYuMTI1IC0wLjk4NDM3NSA2LjEyNSAtMy4wNDY4NzUgQyA2LjEyNSAtNS4yMTg3NSA1LjA3ODEyNSAtNi40Njg3NSAzLjI2NTYyNSAtNi40Njg3NSBaIE0gMy4yODEyNSAtNS41NDY4NzUgQyA0LjQwNjI1IC01LjU0Njg3NSA1LjA3ODEyNSAtNC42MjUgNS4wNzgxMjUgLTMuMDYyNSBDIDUuMDc4MTI1IC0xLjU3ODEyNSA0LjM3NSAtMC42NDA2MjUgMy4yODEyNSAtMC42NDA2MjUgQyAyLjE1NjI1IC0wLjY0MDYyNSAxLjQ2ODc1IC0xLjU3ODEyNSAxLjQ2ODc1IC0zLjA5Mzc1IEMgMS40Njg3NSAtNC42MDkzNzUgMi4xNTYyNSAtNS41NDY4NzUgMy4yODEyNSAtNS41NDY4NzUgWiBNIDMuMjgxMjUgLTUuNTQ2ODc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC05Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAxLjY4NzUgLTguNzUgTCAwLjcwMzEyNSAtOC43NSBMIDAuNzAzMTI1IDAgTCAxLjY4NzUgMCBMIDEuNjg3NSAtMi40NTMxMjUgTCAyLjY1NjI1IC0zLjQwNjI1IEwgNC43ODEyNSAwIEwgNi4wMzEyNSAwIEwgMy40NTMxMjUgLTQuMTA5Mzc1IEwgNS42NDA2MjUgLTYuMjgxMjUgTCA0LjM1OTM3NSAtNi4yODEyNSBMIDEuNjg3NSAtMy42MjUgWiBNIDEuNjg3NSAtOC43NSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtMTAiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDEuNzk2ODc1IC02LjI4MTI1IEwgMC43OTY4NzUgLTYuMjgxMjUgTCAwLjc5Njg3NSAwIEwgMS43OTY4NzUgMCBaIE0gMS43OTY4NzUgLTguNzUgTCAwLjc5Njg3NSAtOC43NSBMIDAuNzk2ODc1IC03LjQ4NDM3NSBMIDEuNzk2ODc1IC03LjQ4NDM3NSBaIE0gMS43OTY4NzUgLTguNzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTExIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAwLjg0Mzc1IC02LjI4MTI1IEwgMC44NDM3NSAwIEwgMS44NDM3NSAwIEwgMS44NDM3NSAtMy40Njg3NSBDIDEuODQzNzUgLTQuNzUgMi41MTU2MjUgLTUuNTkzNzUgMy41NDY4NzUgLTUuNTkzNzUgQyA0LjM0Mzc1IC01LjU5Mzc1IDQuODQzNzUgLTUuMTA5Mzc1IDQuODQzNzUgLTQuMzU5Mzc1IEwgNC44NDM3NSAwIEwgNS44NDM3NSAwIEwgNS44NDM3NSAtNC43NSBDIDUuODQzNzUgLTUuNzk2ODc1IDUuMDYyNSAtNi40Njg3NSAzLjg1OTM3NSAtNi40Njg3NSBDIDIuOTIxODc1IC02LjQ2ODc1IDIuMzEyNSAtNi4xMDkzNzUgMS43NjU2MjUgLTUuMjM0Mzc1IEwgMS43NjU2MjUgLTYuMjgxMjUgWiBNIDAuODQzNzUgLTYuMjgxMjUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTEyIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAzLjkyMTg3NSAtMi4wNDY4NzUgTCAzLjkyMTg3NSAwIEwgNC45ODQzNzUgMCBMIDQuOTg0Mzc1IC0yLjA0Njg3NSBMIDYuMjM0Mzc1IC0yLjA0Njg3NSBMIDYuMjM0Mzc1IC0yLjk4NDM3NSBMIDQuOTg0Mzc1IC0yLjk4NDM3NSBMIDQuOTg0Mzc1IC04LjUxNTYyNSBMIDQuMjAzMTI1IC04LjUxNTYyNSBMIDAuMzQzNzUgLTMuMTU2MjUgTCAwLjM0Mzc1IC0yLjA0Njg3NSBaIE0gMy45MjE4NzUgLTIuOTg0Mzc1IEwgMS4yNjU2MjUgLTIuOTg0Mzc1IEwgMy45MjE4NzUgLTYuNzAzMTI1IFogTSAzLjkyMTg3NSAtMi45ODQzNzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTEzIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAzLjEwOTM3NSAtNi4wNjI1IEwgMy4xMDkzNzUgMCBMIDQuMTU2MjUgMCBMIDQuMTU2MjUgLTguNTE1NjI1IEwgMy40Njg3NSAtOC41MTU2MjUgQyAzLjA5Mzc1IC03LjIwMzEyNSAyLjg1OTM3NSAtNy4wMTU2MjUgMS4yMTg3NSAtNi44MTI1IEwgMS4yMTg3NSAtNi4wNjI1IFogTSAzLjEwOTM3NSAtNi4wNjI1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC0xNCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gNS45Njg3NSAtNi4yODEyNSBDIDUuNzY1NjI1IC03LjY4NzUgNC44NTkzNzUgLTguNTE1NjI1IDMuNTYyNSAtOC41MTU2MjUgQyAyLjYyNSAtOC41MTU2MjUgMS43ODEyNSAtOC4wNDY4NzUgMS4yODEyNSAtNy4yOTY4NzUgQyAwLjc1IC02LjQ2ODc1IDAuNTE1NjI1IC01LjQyMTg3NSAwLjUxNTYyNSAtMy44NzUgQyAwLjUxNTYyNSAtMi40NTMxMjUgMC43MzQzNzUgLTEuNTMxMjUgMS4yMzQzNzUgLTAuNzgxMjUgQyAxLjY4NzUgLTAuMDkzNzUgMi40Mzc1IDAuMjgxMjUgMy4zNzUgMC4yODEyNSBDIDQuOTg0Mzc1IDAuMjgxMjUgNi4xNTYyNSAtMC45MjE4NzUgNi4xNTYyNSAtMi41OTM3NSBDIDYuMTU2MjUgLTQuMTcxODc1IDUuMDc4MTI1IC01LjI5Njg3NSAzLjU0Njg3NSAtNS4yOTY4NzUgQyAyLjcxODc1IC01LjI5Njg3NSAyLjA0Njg3NSAtNC45Njg3NSAxLjU5Mzc1IC00LjM0Mzc1IEMgMS42MDkzNzUgLTYuNDIxODc1IDIuMjgxMjUgLTcuNTc4MTI1IDMuNDg0Mzc1IC03LjU3ODEyNSBDIDQuMjM0Mzc1IC03LjU3ODEyNSA0Ljc1IC03LjEwOTM3NSA0LjkyMTg3NSAtNi4yODEyNSBaIE0gMy40MjE4NzUgLTQuMzU5Mzc1IEMgNC40Mzc1IC00LjM1OTM3NSA1LjA3ODEyNSAtMy42NDA2MjUgNS4wNzgxMjUgLTIuNTE1NjI1IEMgNS4wNzgxMjUgLTEuNDM3NSA0LjM1OTM3NSAtMC42NTYyNSAzLjM5MDYyNSAtMC42NTYyNSBDIDIuNDA2MjUgLTAuNjU2MjUgMS42NTYyNSAtMS40Njg3NSAxLjY1NjI1IC0yLjU2MjUgQyAxLjY1NjI1IC0zLjYyNSAyLjM3NSAtNC4zNTkzNzUgMy40MjE4NzUgLTQuMzU5Mzc1IFogTSAzLjQyMTg3NSAtNC4zNTkzNzUgIi8+Cjwvc3ltYm9sPgo8L2c+CjwvZGVmcz4KPGcgaWQ9InN1cmZhY2U2Ij4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjUwNCIgaGVpZ2h0PSI1MDQiIHN0eWxlPSJmaWxsOnJnYigxMDAlLDEwMCUsMTAwJSk7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7Ii8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw0Mi4zNTI5NDElLDc2LjA3ODQzMSUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMTEyIDM0NS4zMzIwMzEgTCAyMDUuMzMyMDMxIDM0NS4zMzIwMzEgTCAyMDUuMzMyMDMxIDI1MiBMIDExMiAyNTIgWiBNIDExMiAzNDUuMzMyMDMxICIvPgo8cGF0aCBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoMCUsNDIuMzUyOTQxJSw3Ni4wNzg0MzElKTtmaWxsLW9wYWNpdHk6MC43MDE5NjE7c3Ryb2tlLXdpZHRoOjAuNzU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZTpyZ2IoMCUsMCUsMCUpO3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiBkPSJNIDExMiAyNTIgTCAyMDUuMzMyMDMxIDI1MiBMIDIwNS4zMzIwMzEgMTU4LjY2Nzk2OSBMIDExMiAxNTguNjY3OTY5IFogTSAxMTIgMjUyICIvPgo8cGF0aCBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoMCUsNDIuMzUyOTQxJSw3Ni4wNzg0MzElKTtmaWxsLW9wYWNpdHk6MC43MDE5NjE7c3Ryb2tlLXdpZHRoOjAuNzU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZTpyZ2IoMCUsMCUsMCUpO3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiBkPSJNIDIwNS4zMzIwMzEgMzQ1LjMzMjAzMSBMIDI5OC42NjQwNjIgMzQ1LjMzMjAzMSBMIDI5OC42NjQwNjIgMjUyIEwgMjA1LjMzMjAzMSAyNTIgWiBNIDIwNS4zMzIwMzEgMzQ1LjMzMjAzMSAiLz4KPHBhdGggc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvO2ZpbGw6cmdiKDAlLDQyLjM1Mjk0MSUsNzYuMDc4NDMxJSk7ZmlsbC1vcGFjaXR5OjAuNzAxOTYxO3N0cm9rZS13aWR0aDowLjc1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2U6cmdiKDAlLDAlLDAlKTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTSAyMDUuMzMyMDMxIDI1MiBMIDI5OC42NjQwNjIgMjUyIEwgMjk4LjY2NDA2MiAxNTguNjY3OTY5IEwgMjA1LjMzMjAzMSAxNTguNjY3OTY5IFogTSAyMDUuMzMyMDMxIDI1MiAiLz4KPHBhdGggc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvO2ZpbGw6cmdiKDcxLjM3MjU0OSUsMTAuMTk2MDc4JSwzMS43NjQ3MDYlKTtmaWxsLW9wYWNpdHk6MC43MDE5NjE7c3Ryb2tlLXdpZHRoOjAuNzU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZTpyZ2IoMCUsMCUsMCUpO3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiBkPSJNIDI5OC42Njc5NjkgMzQ1LjMzMjAzMSBMIDM5MiAzNDUuMzMyMDMxIEwgMzkyIDI1MiBMIDI5OC42Njc5NjkgMjUyIFogTSAyOTguNjY3OTY5IDM0NS4zMzIwMzEgIi8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw0Mi4zNTI5NDElLDc2LjA3ODQzMSUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMjk4LjY2Nzk2OSAyNTIgTCAzOTIgMjUyIEwgMzkyIDE1OC42Njc5NjkgTCAyOTguNjY3OTY5IDE1OC42Njc5NjkgWiBNIDI5OC42Njc5NjkgMjUyICIvPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEiIHg9IjE0OC42NjAxNTYiIHk9IjEzMC42Njc5NjkiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMiIgeD0iMTU1LjMzMjE5OSIgeT0iMTMwLjY2Nzk2OSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0zIiB4PSIxNjIuMDA0MjQyIiB5PSIxMzAuNjY3OTY5Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSIxNTUuMzMyMDMxIiB5PSIzNzcuNDQ5MjE5Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC01IiB4PSIyNDIuNjY0MDYyIiB5PSIxMzAuNjY3OTY5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTMiIHg9IjI0OC42NjQxMDgiIHk9IjEzMC42Njc5NjkiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtNiIgeD0iMjU1LjMzNjE1MSIgeT0iMTMwLjY2Nzk2OSIvPgo8L2c+CjxnIHN0eWxlPSJmaWxsOnJnYigwJSwwJSwwJSk7ZmlsbC1vcGFjaXR5OjE7Ij4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtNCIgeD0iMjQ4LjY2NDA2MiIgeT0iMzc3LjQ0OTIxOSIvPgo8L2c+CjxnIHN0eWxlPSJmaWxsOnJnYigwJSwwJSwwJSk7ZmlsbC1vcGFjaXR5OjE7Ij4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtNSIgeD0iMzIyLjk5MjE4OCIgeT0iMTMwLjY2Nzk2OSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC03IiB4PSIzMjguOTkyMjMzIiB5PSIxMzAuNjY3OTY5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTgiIHg9IjMzOC45ODgyOTciIHk9IjEzMC42Njc5NjkiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtOSIgeD0iMzQ1LjY2MDMzOSIgeT0iMTMwLjY2Nzk2OSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMCIgeD0iMzUxLjY2MDM4NSIgeT0iMTMwLjY2Nzk2OSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMSIgeD0iMzU0LjMyNDQwMiIgeT0iMTMwLjY2Nzk2OSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0yIiB4PSIzNjAuOTk2NDQ1IiB5PSIxMzAuNjY3OTY5Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMiIgeD0iMzM4LjY2MDE1NiIgeT0iMzc3LjQ0OTIxOSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSIzNDUuMzMyMTk5IiB5PSIzNzcuNDQ5MjE5Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMyIgeD0iNDIwIiB5PSIzMDIuOTI1NzgxIi8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMiIgeD0iNzAuNjU2MjUiIHk9IjMwMi43ODUxNTYiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtNCIgeD0iNzcuMzI4MjkzIiB5PSIzMDIuNzg1MTU2Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSI0MjAiIHk9IjIwOS40NDkyMTkiLz4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEzIiB4PSI2My45ODQzNzUiIHk9IjIwOS40NDkyMTkiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMTQiIHg9IjcwLjY1NjQxOCIgeT0iMjA5LjQ0OTIxOSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMyIgeD0iNzcuMzI4NDYxIiB5PSIyMDkuNDQ5MjE5Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xMiIgeD0iNDEzLjMyODEyNSIgeT0iMzc3LjQ0OTIxOSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSI0MjAuMDAwMTY4IiB5PSIzNzcuNDQ5MjE5Ii8+CjwvZz4KPC9nPgo8L3N2Zz4K" alt="plot of chunk unnamed-chunk-14"/></p>
+
+<pre><code>##     age sex smoking   
+## 161   1   1       1  0
+## 40    1   1       0  1
+##       0   0      40 40
+</code></pre>
+
+<p>Now we test if smoking status missingness is associated with
+any other variables of interest.</p>
+
+<pre><code class="r">coef(summary(glm(is.na(smoking) ~ age + sex, data=samples.mcar, family=&quot;binomial&quot;)))
+</code></pre>
+
+<pre><code>##                 Estimate Std. Error    z value  Pr(&gt;|z|)
+## (Intercept) -1.138172924  1.5286906 -0.7445411 0.4565492
+## age         -0.009932406  0.0261631 -0.3796341 0.7042170
+## sexmale      0.414839240  0.4079895  1.0167889 0.3092539
+</code></pre>
+
+<p>Assuming that age and sex are the only external variables of interest here,
+we have shown that smoking status is missing completely at random.</p>
+
+<h2>Missing at random</h2>
+
+<p>Now suppose we remove smoking status values
+so that more are missing from females than males.</p>
+
+<pre><code class="r">samples.mar &lt;- samples[,c(&quot;smoking&quot;,&quot;sex&quot;,&quot;age&quot;)]
+missing.idx &lt;- sample(1:nrow(samples.mar),
+                      floor(pct.missing*nrow(samples.mar)),
+                      prob=ifelse(samples.mar$sex == &quot;male&quot;, 0.2, 0.8))
+samples.mar$smoking[missing.idx] &lt;- NA
+</code></pre>
+
+<p>Have a look at the patterns.</p>
+
+<pre><code class="r">table(samples.mar$smoking, useNA=&quot;a&quot;)
+</code></pre>
+
+<pre><code>## 
+## current  former   never    &lt;NA&gt; 
+##      16       0     145      40
+</code></pre>
+
+<pre><code class="r">md.pattern(samples.mar)
+</code></pre>
+
+<p><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNTA0cHQiIGhlaWdodD0iNTA0cHQiIHZpZXdCb3g9IjAgMCA1MDQgNTA0IiB2ZXJzaW9uPSIxLjEiPgo8ZGVmcz4KPGc+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtMCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9IiIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC0xIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA1LjI1IC00LjUzMTI1IEMgNS4yNSAtNS43NjU2MjUgNC40MjE4NzUgLTYuNDY4NzUgMi45Njg3NSAtNi40Njg3NSBDIDEuNTE1NjI1IC02LjQ2ODc1IDAuNTYyNSAtNS43MTg3NSAwLjU2MjUgLTQuNTQ2ODc1IEMgMC41NjI1IC0zLjU2MjUgMS4wNjI1IC0zLjA5Mzc1IDIuNTYyNSAtMi43MzQzNzUgTCAzLjQ4NDM3NSAtMi41MTU2MjUgQyA0LjE4NzUgLTIuMzQzNzUgNC40Njg3NSAtMi4wOTM3NSA0LjQ2ODc1IC0xLjYyNSBDIDQuNDY4NzUgLTEuMDQ2ODc1IDMuODc1IC0wLjY0MDYyNSAzIC0wLjY0MDYyNSBDIDIuNDUzMTI1IC0wLjY0MDYyNSAyIC0wLjc5Njg3NSAxLjc1IC0xLjA2MjUgQyAxLjU5Mzc1IC0xLjI1IDEuNTMxMjUgLTEuNDIxODc1IDEuNDY4NzUgLTEuODc1IEwgMC40MDYyNSAtMS44NzUgQyAwLjQ1MzEyNSAtMC40MjE4NzUgMS4yNjU2MjUgMC4yODEyNSAyLjkyMTg3NSAwLjI4MTI1IEMgNC41IDAuMjgxMjUgNS41MTU2MjUgLTAuNSA1LjUxNTYyNSAtMS43MTg3NSBDIDUuNTE1NjI1IC0yLjY1NjI1IDQuOTg0Mzc1IC0zLjE3MTg3NSAzLjczNDM3NSAtMy40Njg3NSBMIDIuNzY1NjI1IC0zLjcwMzEyNSBDIDEuOTUzMTI1IC0zLjg5MDYyNSAxLjYwOTM3NSAtNC4xNTYyNSAxLjYwOTM3NSAtNC41OTM3NSBDIDEuNjA5Mzc1IC01LjE3MTg3NSAyLjEyNSAtNS41NDY4NzUgMi45Mzc1IC01LjU0Njg3NSBDIDMuNzUgLTUuNTQ2ODc1IDQuMTcxODc1IC01LjIwMzEyNSA0LjIwMzEyNSAtNC41MzEyNSBaIE0gNS4yNSAtNC41MzEyNSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtMiI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gNi4xNTYyNSAtMi44MTI1IEMgNi4xNTYyNSAtMy43NjU2MjUgNi4wNzgxMjUgLTQuMzQzNzUgNS45MDYyNSAtNC44MTI1IEMgNS41IC01Ljg0Mzc1IDQuNTMxMjUgLTYuNDY4NzUgMy4zNTkzNzUgLTYuNDY4NzUgQyAxLjYwOTM3NSAtNi40Njg3NSAwLjQ4NDM3NSAtNS4xMjUgMC40ODQzNzUgLTMuMDYyNSBDIDAuNDg0Mzc1IC0xIDEuNTc4MTI1IDAuMjgxMjUgMy4zNDM3NSAwLjI4MTI1IEMgNC43ODEyNSAwLjI4MTI1IDUuNzY1NjI1IC0wLjU0Njg3NSA2LjAzMTI1IC0xLjkwNjI1IEwgNS4wMTU2MjUgLTEuOTA2MjUgQyA0LjczNDM3NSAtMS4wNzgxMjUgNC4xNzE4NzUgLTAuNjQwNjI1IDMuMzc1IC0wLjY0MDYyNSBDIDIuNzM0Mzc1IC0wLjY0MDYyNSAyLjIwMzEyNSAtMC45Mzc1IDEuODU5Mzc1IC0xLjQ2ODc1IEMgMS42MjUgLTEuODI4MTI1IDEuNTMxMjUgLTIuMTg3NSAxLjUzMTI1IC0yLjgxMjUgWiBNIDEuNTQ2ODc1IC0zLjYyNSBDIDEuNjI1IC00Ljc4MTI1IDIuMzQzNzUgLTUuNTQ2ODc1IDMuMzQzNzUgLTUuNTQ2ODc1IEMgNC4zMjgxMjUgLTUuNTQ2ODc1IDUuMDkzNzUgLTQuNzM0Mzc1IDUuMDkzNzUgLTMuNzAzMTI1IEMgNS4wOTM3NSAtMy42NzE4NzUgNS4wOTM3NSAtMy42NDA2MjUgNS4wNzgxMjUgLTMuNjI1IFogTSAxLjU0Njg3NSAtMy42MjUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTMiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDMuNSAtMy4yNSBMIDUuNjA5Mzc1IC02LjI4MTI1IEwgNC40ODQzNzUgLTYuMjgxMjUgTCAyLjk2ODc1IC00LjAxNTYyNSBMIDEuNDY4NzUgLTYuMjgxMjUgTCAwLjMyODEyNSAtNi4yODEyNSBMIDIuNDIxODc1IC0zLjIwMzEyNSBMIDAuMjAzMTI1IDAgTCAxLjM0Mzc1IDAgTCAyLjkzNzUgLTIuNDA2MjUgTCA0LjUxNTYyNSAwIEwgNS42NzE4NzUgMCBaIE0gMy41IC0zLjI1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC00Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAzLjI5Njg3NSAtOC41MTU2MjUgQyAyLjUxNTYyNSAtOC41MTU2MjUgMS43ODEyNSAtOC4xNTYyNSAxLjM0Mzc1IC03LjU3ODEyNSBDIDAuNzk2ODc1IC02LjgyODEyNSAwLjUxNTYyNSAtNS42ODc1IDAuNTE1NjI1IC00LjEwOTM3NSBDIDAuNTE1NjI1IC0xLjI1IDEuNDY4NzUgMC4yODEyNSAzLjI5Njg3NSAwLjI4MTI1IEMgNS4wOTM3NSAwLjI4MTI1IDYuMDc4MTI1IC0xLjI1IDYuMDc4MTI1IC00LjA0Njg3NSBDIDYuMDc4MTI1IC01LjcwMzEyNSA1LjgxMjUgLTYuNzk2ODc1IDUuMjUgLTcuNTc4MTI1IEMgNC44MTI1IC04LjE3MTg3NSA0LjEwOTM3NSAtOC41MTU2MjUgMy4yOTY4NzUgLTguNTE1NjI1IFogTSAzLjI5Njg3NSAtNy41NzgxMjUgQyA0LjQzNzUgLTcuNTc4MTI1IDUgLTYuNDIxODc1IDUgLTQuMTQwNjI1IEMgNSAtMS43MzQzNzUgNC40NTMxMjUgLTAuNTkzNzUgMy4yODEyNSAtMC41OTM3NSBDIDIuMTU2MjUgLTAuNTkzNzUgMS41OTM3NSAtMS43ODEyNSAxLjU5Mzc1IC00LjEwOTM3NSBDIDEuNTkzNzUgLTYuNDM3NSAyLjE1NjI1IC03LjU3ODEyNSAzLjI5Njg3NSAtNy41NzgxMjUgWiBNIDMuMjk2ODc1IC03LjU3ODEyNSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtNSI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gNi40MjE4NzUgLTAuNTkzNzUgQyA2LjMxMjUgLTAuNTYyNSA2LjI2NTYyNSAtMC41NjI1IDYuMjAzMTI1IC0wLjU2MjUgQyA1Ljg1OTM3NSAtMC41NjI1IDUuNjU2MjUgLTAuNzUgNS42NTYyNSAtMS4wNjI1IEwgNS42NTYyNSAtNC43NSBDIDUuNjU2MjUgLTUuODc1IDQuODQzNzUgLTYuNDY4NzUgMy4yOTY4NzUgLTYuNDY4NzUgQyAyLjM5MDYyNSAtNi40Njg3NSAxLjYyNSAtNi4yMDMxMjUgMS4yMTg3NSAtNS43MzQzNzUgQyAwLjkyMTg3NSAtNS40MDYyNSAwLjc5Njg3NSAtNS4wNDY4NzUgMC43ODEyNSAtNC40MjE4NzUgTCAxLjc4MTI1IC00LjQyMTg3NSBDIDEuODc1IC01LjIwMzEyNSAyLjMyODEyNSAtNS41NDY4NzUgMy4yNjU2MjUgLTUuNTQ2ODc1IEMgNC4xNTYyNSAtNS41NDY4NzUgNC42NzE4NzUgLTUuMjAzMTI1IDQuNjcxODc1IC00LjYwOTM3NSBMIDQuNjcxODc1IC00LjM0Mzc1IEMgNC42NzE4NzUgLTMuOTIxODc1IDQuNDIxODc1IC0zLjc1IDMuNjI1IC0zLjY0MDYyNSBDIDIuMjAzMTI1IC0zLjQ2ODc1IDEuOTg0Mzc1IC0zLjQyMTg3NSAxLjYwOTM3NSAtMy4yNjU2MjUgQyAwLjg3NSAtMi45Njg3NSAwLjUgLTIuNDA2MjUgMC41IC0xLjU3ODEyNSBDIDAuNSAtMC40Mzc1IDEuMjk2ODc1IDAuMjgxMjUgMi41NjI1IDAuMjgxMjUgQyAzLjM1OTM3NSAwLjI4MTI1IDQgMCA0LjcwMzEyNSAtMC42NDA2MjUgQyA0Ljc4MTI1IC0wLjAxNTYyNSA1LjA5Mzc1IDAuMjgxMjUgNS43MzQzNzUgMC4yODEyNSBDIDUuOTM3NSAwLjI4MTI1IDYuMDkzNzUgMC4yNSA2LjQyMTg3NSAwLjE3MTg3NSBaIE0gNC42NzE4NzUgLTEuOTg0Mzc1IEMgNC42NzE4NzUgLTEuNjQwNjI1IDQuNTc4MTI1IC0xLjQzNzUgNC4yNjU2MjUgLTEuMTU2MjUgQyAzLjg1OTM3NSAtMC43OTY4NzUgMy4zNzUgLTAuNTkzNzUgMi43ODEyNSAtMC41OTM3NSBDIDIgLTAuNTkzNzUgMS41NDY4NzUgLTAuOTY4NzUgMS41NDY4NzUgLTEuNjA5Mzc1IEMgMS41NDY4NzUgLTIuMjY1NjI1IDEuOTg0Mzc1IC0yLjYwOTM3NSAzLjA2MjUgLTIuNzY1NjI1IEMgNC4xMDkzNzUgLTIuOTA2MjUgNC4zMjgxMjUgLTIuOTUzMTI1IDQuNjcxODc1IC0zLjEwOTM3NSBaIE0gNC42NzE4NzUgLTEuOTg0Mzc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC02Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA0LjkzNzUgLTYuMjgxMjUgTCA0LjkzNzUgLTUuMzc1IEMgNC40Mzc1IC02LjEyNSAzLjgyODEyNSAtNi40Njg3NSAzLjAzMTI1IC02LjQ2ODc1IEMgMS40MjE4NzUgLTYuNDY4NzUgMC4zNDM3NSAtNS4wNzgxMjUgMC4zNDM3NSAtMy4wMzEyNSBDIDAuMzQzNzUgLTIgMC42MjUgLTEuMTU2MjUgMS4xNDA2MjUgLTAuNTYyNSBDIDEuNjA5Mzc1IC0wLjAzMTI1IDIuMjgxMjUgMC4yODEyNSAyLjkzNzUgMC4yODEyNSBDIDMuNzM0Mzc1IDAuMjgxMjUgNC4yODEyNSAtMC4wNjI1IDQuODQzNzUgLTAuODU5Mzc1IEwgNC44NDM3NSAtMC41MzEyNSBDIDQuODQzNzUgMC4zMjgxMjUgNC43MzQzNzUgMC44NDM3NSA0LjQ4NDM3NSAxLjE4NzUgQyA0LjIxODc1IDEuNTYyNSAzLjcwMzEyNSAxLjc4MTI1IDMuMDkzNzUgMS43ODEyNSBDIDIuNjQwNjI1IDEuNzgxMjUgMi4yMzQzNzUgMS42NTYyNSAxLjk1MzEyNSAxLjQzNzUgQyAxLjczNDM3NSAxLjI2NTYyNSAxLjYyNSAxLjA5Mzc1IDEuNTc4MTI1IDAuNzE4NzUgTCAwLjU0Njg3NSAwLjcxODc1IEMgMC42NTYyNSAxLjkwNjI1IDEuNTc4MTI1IDIuNjA5Mzc1IDMuMDYyNSAyLjYwOTM3NSBDIDQgMi42MDkzNzUgNC43OTY4NzUgMi4zMTI1IDUuMjAzMTI1IDEuODEyNSBDIDUuNjg3NSAxLjIzNDM3NSA1Ljg3NSAwLjQzNzUgNS44NzUgLTEuMDMxMjUgTCA1Ljg3NSAtNi4yODEyNSBaIE0gMy4xMjUgLTUuNTQ2ODc1IEMgNC4yMTg3NSAtNS41NDY4NzUgNC44NDM3NSAtNC42MjUgNC44NDM3NSAtMy4wNjI1IEMgNC44NDM3NSAtMS41NjI1IDQuMjAzMTI1IC0wLjY0MDYyNSAzLjE0MDYyNSAtMC42NDA2MjUgQyAyLjA0Njg3NSAtMC42NDA2MjUgMS4zOTA2MjUgLTEuNTc4MTI1IDEuMzkwNjI1IC0zLjA5Mzc1IEMgMS4zOTA2MjUgLTQuNjA5Mzc1IDIuMDYyNSAtNS41NDY4NzUgMy4xMjUgLTUuNTQ2ODc1IFogTSAzLjEyNSAtNS41NDY4NzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTciPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDAuODQzNzUgLTYuMjgxMjUgTCAwLjg0Mzc1IDAgTCAxLjg0Mzc1IDAgTCAxLjg0Mzc1IC0zLjk1MzEyNSBDIDEuODQzNzUgLTQuODU5Mzc1IDIuNTE1NjI1IC01LjU5Mzc1IDMuMzI4MTI1IC01LjU5Mzc1IEMgNC4wNjI1IC01LjU5Mzc1IDQuNDg0Mzc1IC01LjE0MDYyNSA0LjQ4NDM3NSAtNC4zMjgxMjUgTCA0LjQ4NDM3NSAwIEwgNS41IDAgTCA1LjUgLTMuOTUzMTI1IEMgNS41IC00Ljg1OTM3NSA2LjE1NjI1IC01LjU5Mzc1IDYuOTY4NzUgLTUuNTkzNzUgQyA3LjcwMzEyNSAtNS41OTM3NSA4LjE0MDYyNSAtNS4xMjUgOC4xNDA2MjUgLTQuMzI4MTI1IEwgOC4xNDA2MjUgMCBMIDkuMTQwNjI1IDAgTCA5LjE0MDYyNSAtNC43MTg3NSBDIDkuMTQwNjI1IC01Ljg0Mzc1IDguNSAtNi40Njg3NSA3LjMxMjUgLTYuNDY4NzUgQyA2LjQ4NDM3NSAtNi40Njg3NSA1Ljk2ODc1IC02LjIxODc1IDUuMzkwNjI1IC01LjUxNTYyNSBDIDUuMDE1NjI1IC02LjE4NzUgNC41MTU2MjUgLTYuNDY4NzUgMy43MDMxMjUgLTYuNDY4NzUgQyAyLjg1OTM3NSAtNi40Njg3NSAyLjI5Njg3NSAtNi4xNTYyNSAxLjc2NTYyNSAtNS40MDYyNSBMIDEuNzY1NjI1IC02LjI4MTI1IFogTSAwLjg0Mzc1IC02LjI4MTI1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC04Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAzLjI2NTYyNSAtNi40Njg3NSBDIDEuNSAtNi40Njg3NSAwLjQzNzUgLTUuMjAzMTI1IDAuNDM3NSAtMy4wOTM3NSBDIDAuNDM3NSAtMC45ODQzNzUgMS40ODQzNzUgMC4yODEyNSAzLjI4MTI1IDAuMjgxMjUgQyA1LjA0Njg3NSAwLjI4MTI1IDYuMTI1IC0wLjk4NDM3NSA2LjEyNSAtMy4wNDY4NzUgQyA2LjEyNSAtNS4yMTg3NSA1LjA3ODEyNSAtNi40Njg3NSAzLjI2NTYyNSAtNi40Njg3NSBaIE0gMy4yODEyNSAtNS41NDY4NzUgQyA0LjQwNjI1IC01LjU0Njg3NSA1LjA3ODEyNSAtNC42MjUgNS4wNzgxMjUgLTMuMDYyNSBDIDUuMDc4MTI1IC0xLjU3ODEyNSA0LjM3NSAtMC42NDA2MjUgMy4yODEyNSAtMC42NDA2MjUgQyAyLjE1NjI1IC0wLjY0MDYyNSAxLjQ2ODc1IC0xLjU3ODEyNSAxLjQ2ODc1IC0zLjA5Mzc1IEMgMS40Njg3NSAtNC42MDkzNzUgMi4xNTYyNSAtNS41NDY4NzUgMy4yODEyNSAtNS41NDY4NzUgWiBNIDMuMjgxMjUgLTUuNTQ2ODc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC05Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAxLjY4NzUgLTguNzUgTCAwLjcwMzEyNSAtOC43NSBMIDAuNzAzMTI1IDAgTCAxLjY4NzUgMCBMIDEuNjg3NSAtMi40NTMxMjUgTCAyLjY1NjI1IC0zLjQwNjI1IEwgNC43ODEyNSAwIEwgNi4wMzEyNSAwIEwgMy40NTMxMjUgLTQuMTA5Mzc1IEwgNS42NDA2MjUgLTYuMjgxMjUgTCA0LjM1OTM3NSAtNi4yODEyNSBMIDEuNjg3NSAtMy42MjUgWiBNIDEuNjg3NSAtOC43NSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtMTAiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDEuNzk2ODc1IC02LjI4MTI1IEwgMC43OTY4NzUgLTYuMjgxMjUgTCAwLjc5Njg3NSAwIEwgMS43OTY4NzUgMCBaIE0gMS43OTY4NzUgLTguNzUgTCAwLjc5Njg3NSAtOC43NSBMIDAuNzk2ODc1IC03LjQ4NDM3NSBMIDEuNzk2ODc1IC03LjQ4NDM3NSBaIE0gMS43OTY4NzUgLTguNzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTExIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAwLjg0Mzc1IC02LjI4MTI1IEwgMC44NDM3NSAwIEwgMS44NDM3NSAwIEwgMS44NDM3NSAtMy40Njg3NSBDIDEuODQzNzUgLTQuNzUgMi41MTU2MjUgLTUuNTkzNzUgMy41NDY4NzUgLTUuNTkzNzUgQyA0LjM0Mzc1IC01LjU5Mzc1IDQuODQzNzUgLTUuMTA5Mzc1IDQuODQzNzUgLTQuMzU5Mzc1IEwgNC44NDM3NSAwIEwgNS44NDM3NSAwIEwgNS44NDM3NSAtNC43NSBDIDUuODQzNzUgLTUuNzk2ODc1IDUuMDYyNSAtNi40Njg3NSAzLjg1OTM3NSAtNi40Njg3NSBDIDIuOTIxODc1IC02LjQ2ODc1IDIuMzEyNSAtNi4xMDkzNzUgMS43NjU2MjUgLTUuMjM0Mzc1IEwgMS43NjU2MjUgLTYuMjgxMjUgWiBNIDAuODQzNzUgLTYuMjgxMjUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTEyIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAzLjkyMTg3NSAtMi4wNDY4NzUgTCAzLjkyMTg3NSAwIEwgNC45ODQzNzUgMCBMIDQuOTg0Mzc1IC0yLjA0Njg3NSBMIDYuMjM0Mzc1IC0yLjA0Njg3NSBMIDYuMjM0Mzc1IC0yLjk4NDM3NSBMIDQuOTg0Mzc1IC0yLjk4NDM3NSBMIDQuOTg0Mzc1IC04LjUxNTYyNSBMIDQuMjAzMTI1IC04LjUxNTYyNSBMIDAuMzQzNzUgLTMuMTU2MjUgTCAwLjM0Mzc1IC0yLjA0Njg3NSBaIE0gMy45MjE4NzUgLTIuOTg0Mzc1IEwgMS4yNjU2MjUgLTIuOTg0Mzc1IEwgMy45MjE4NzUgLTYuNzAzMTI1IFogTSAzLjkyMTg3NSAtMi45ODQzNzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTEzIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAzLjEwOTM3NSAtNi4wNjI1IEwgMy4xMDkzNzUgMCBMIDQuMTU2MjUgMCBMIDQuMTU2MjUgLTguNTE1NjI1IEwgMy40Njg3NSAtOC41MTU2MjUgQyAzLjA5Mzc1IC03LjIwMzEyNSAyLjg1OTM3NSAtNy4wMTU2MjUgMS4yMTg3NSAtNi44MTI1IEwgMS4yMTg3NSAtNi4wNjI1IFogTSAzLjEwOTM3NSAtNi4wNjI1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC0xNCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gNS45Njg3NSAtNi4yODEyNSBDIDUuNzY1NjI1IC03LjY4NzUgNC44NTkzNzUgLTguNTE1NjI1IDMuNTYyNSAtOC41MTU2MjUgQyAyLjYyNSAtOC41MTU2MjUgMS43ODEyNSAtOC4wNDY4NzUgMS4yODEyNSAtNy4yOTY4NzUgQyAwLjc1IC02LjQ2ODc1IDAuNTE1NjI1IC01LjQyMTg3NSAwLjUxNTYyNSAtMy44NzUgQyAwLjUxNTYyNSAtMi40NTMxMjUgMC43MzQzNzUgLTEuNTMxMjUgMS4yMzQzNzUgLTAuNzgxMjUgQyAxLjY4NzUgLTAuMDkzNzUgMi40Mzc1IDAuMjgxMjUgMy4zNzUgMC4yODEyNSBDIDQuOTg0Mzc1IDAuMjgxMjUgNi4xNTYyNSAtMC45MjE4NzUgNi4xNTYyNSAtMi41OTM3NSBDIDYuMTU2MjUgLTQuMTcxODc1IDUuMDc4MTI1IC01LjI5Njg3NSAzLjU0Njg3NSAtNS4yOTY4NzUgQyAyLjcxODc1IC01LjI5Njg3NSAyLjA0Njg3NSAtNC45Njg3NSAxLjU5Mzc1IC00LjM0Mzc1IEMgMS42MDkzNzUgLTYuNDIxODc1IDIuMjgxMjUgLTcuNTc4MTI1IDMuNDg0Mzc1IC03LjU3ODEyNSBDIDQuMjM0Mzc1IC03LjU3ODEyNSA0Ljc1IC03LjEwOTM3NSA0LjkyMTg3NSAtNi4yODEyNSBaIE0gMy40MjE4NzUgLTQuMzU5Mzc1IEMgNC40Mzc1IC00LjM1OTM3NSA1LjA3ODEyNSAtMy42NDA2MjUgNS4wNzgxMjUgLTIuNTE1NjI1IEMgNS4wNzgxMjUgLTEuNDM3NSA0LjM1OTM3NSAtMC42NTYyNSAzLjM5MDYyNSAtMC42NTYyNSBDIDIuNDA2MjUgLTAuNjU2MjUgMS42NTYyNSAtMS40Njg3NSAxLjY1NjI1IC0yLjU2MjUgQyAxLjY1NjI1IC0zLjYyNSAyLjM3NSAtNC4zNTkzNzUgMy40MjE4NzUgLTQuMzU5Mzc1IFogTSAzLjQyMTg3NSAtNC4zNTkzNzUgIi8+Cjwvc3ltYm9sPgo8L2c+CjwvZGVmcz4KPGcgaWQ9InN1cmZhY2UxMSI+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI1MDQiIGhlaWdodD0iNTA0IiBzdHlsZT0iZmlsbDpyZ2IoMTAwJSwxMDAlLDEwMCUpO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lOyIvPgo8cGF0aCBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoMCUsNDIuMzUyOTQxJSw3Ni4wNzg0MzElKTtmaWxsLW9wYWNpdHk6MC43MDE5NjE7c3Ryb2tlLXdpZHRoOjAuNzU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZTpyZ2IoMCUsMCUsMCUpO3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiBkPSJNIDExMiAzNDUuMzMyMDMxIEwgMjA1LjMzMjAzMSAzNDUuMzMyMDMxIEwgMjA1LjMzMjAzMSAyNTIgTCAxMTIgMjUyIFogTSAxMTIgMzQ1LjMzMjAzMSAiLz4KPHBhdGggc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvO2ZpbGw6cmdiKDAlLDQyLjM1Mjk0MSUsNzYuMDc4NDMxJSk7ZmlsbC1vcGFjaXR5OjAuNzAxOTYxO3N0cm9rZS13aWR0aDowLjc1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2U6cmdiKDAlLDAlLDAlKTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTSAxMTIgMjUyIEwgMjA1LjMzMjAzMSAyNTIgTCAyMDUuMzMyMDMxIDE1OC42Njc5NjkgTCAxMTIgMTU4LjY2Nzk2OSBaIE0gMTEyIDI1MiAiLz4KPHBhdGggc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvO2ZpbGw6cmdiKDAlLDQyLjM1Mjk0MSUsNzYuMDc4NDMxJSk7ZmlsbC1vcGFjaXR5OjAuNzAxOTYxO3N0cm9rZS13aWR0aDowLjc1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2U6cmdiKDAlLDAlLDAlKTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTSAyMDUuMzMyMDMxIDM0NS4zMzIwMzEgTCAyOTguNjY0MDYyIDM0NS4zMzIwMzEgTCAyOTguNjY0MDYyIDI1MiBMIDIwNS4zMzIwMzEgMjUyIFogTSAyMDUuMzMyMDMxIDM0NS4zMzIwMzEgIi8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw0Mi4zNTI5NDElLDc2LjA3ODQzMSUpO2ZpbGwtb3BhY2l0eTowLjcwMTk2MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMjA1LjMzMjAzMSAyNTIgTCAyOTguNjY0MDYyIDI1MiBMIDI5OC42NjQwNjIgMTU4LjY2Nzk2OSBMIDIwNS4zMzIwMzEgMTU4LjY2Nzk2OSBaIE0gMjA1LjMzMjAzMSAyNTIgIi8+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYig3MS4zNzI1NDklLDEwLjE5NjA3OCUsMzEuNzY0NzA2JSk7ZmlsbC1vcGFjaXR5OjAuNzAxOTYxO3N0cm9rZS13aWR0aDowLjc1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2U6cmdiKDAlLDAlLDAlKTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTSAyOTguNjY3OTY5IDM0NS4zMzIwMzEgTCAzOTIgMzQ1LjMzMjAzMSBMIDM5MiAyNTIgTCAyOTguNjY3OTY5IDI1MiBaIE0gMjk4LjY2Nzk2OSAzNDUuMzMyMDMxICIvPgo8cGF0aCBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoMCUsNDIuMzUyOTQxJSw3Ni4wNzg0MzElKTtmaWxsLW9wYWNpdHk6MC43MDE5NjE7c3Ryb2tlLXdpZHRoOjAuNzU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZTpyZ2IoMCUsMCUsMCUpO3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiBkPSJNIDI5OC42Njc5NjkgMjUyIEwgMzkyIDI1MiBMIDM5MiAxNTguNjY3OTY5IEwgMjk4LjY2Nzk2OSAxNTguNjY3OTY5IFogTSAyOTguNjY3OTY5IDI1MiAiLz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xIiB4PSIxNDkuMzMyMDMxIiB5PSIxMzAuNjY3OTY5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTIiIHg9IjE1NS4zMzIwNzciIHk9IjEzMC42Njc5NjkiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMyIgeD0iMTYyLjAwNDEyIiB5PSIxMzAuNjY3OTY5Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSIxNTUuMzMyMDMxIiB5PSIzNzcuNDQ5MjE5Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC01IiB4PSIyNDEuOTkyMTg4IiB5PSIxMzAuNjY3OTY5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTYiIHg9IjI0OC42NjQyMyIgeT0iMTMwLjY2Nzk2OSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0yIiB4PSIyNTUuMzM2MjczIiB5PSIxMzAuNjY3OTY5Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSIyNDguNjY0MDYyIiB5PSIzNzcuNDQ5MjE5Ii8+CjwvZz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xIiB4PSIzMjIuOTkyMTg4IiB5PSIxMzAuNjY3OTY5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTciIHg9IjMyOC45OTIyMzMiIHk9IjEzMC42Njc5NjkiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtOCIgeD0iMzM4Ljk4ODI5NyIgeT0iMTMwLjY2Nzk2OSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC05IiB4PSIzNDUuNjYwMzM5IiB5PSIxMzAuNjY3OTY5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEwIiB4PSIzNTEuNjYwMzg1IiB5PSIxMzAuNjY3OTY5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTExIiB4PSIzNTQuMzI0NDAyIiB5PSIxMzAuNjY3OTY5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTYiIHg9IjM2MC45OTY0NDUiIHk9IjEzMC42Njc5NjkiLz4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEyIiB4PSIzMzguNjYwMTU2IiB5PSIzNzcuNDQ5MjE5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTQiIHg9IjM0NS4zMzIxOTkiIHk9IjM3Ny40NDkyMTkiLz4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEzIiB4PSI0MjAiIHk9IjMwMi45MjU3ODEiLz4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEyIiB4PSI3MC42NTYyNSIgeT0iMzAyLjc4NTE1NiIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSI3Ny4zMjgyOTMiIHk9IjMwMi43ODUxNTYiLz4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTQiIHg9IjQyMCIgeT0iMjA5LjQ0OTIxOSIvPgo8L2c+CjxnIHN0eWxlPSJmaWxsOnJnYigwJSwwJSwwJSk7ZmlsbC1vcGFjaXR5OjE7Ij4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMTMiIHg9IjYzLjk4NDM3NSIgeT0iMjA5LjQ0OTIxOSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xNCIgeD0iNzAuNjU2NDE4IiB5PSIyMDkuNDQ5MjE5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEzIiB4PSI3Ny4zMjg0NjEiIHk9IjIwOS40NDkyMTkiLz4KPC9nPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEyIiB4PSI0MTMuMzI4MTI1IiB5PSIzNzcuNDQ5MjE5Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTQiIHg9IjQyMC4wMDAxNjgiIHk9IjM3Ny40NDkyMTkiLz4KPC9nPgo8L2c+Cjwvc3ZnPgo=" alt="plot of chunk unnamed-chunk-17"/></p>
+
+<pre><code>##     sex age smoking   
+## 161   1   1       1  0
+## 40    1   1       0  1
+##       0   0      40 40
+</code></pre>
+
+<p>Investigate missingness by sex.</p>
+
+<pre><code class="r">table(sex=samples.mar$sex, missing=is.na(samples.mar$smoking))
+</code></pre>
+
+<pre><code>##         missing
+## sex      FALSE TRUE
+##   female    41   24
+##   male     120   16
+</code></pre>
+
+<p>We should see a correlation of missingness with sex.</p>
+
+<pre><code class="r">coef(summary(glm(is.na(smoking) ~ age + sex, data=samples.mar, family=&quot;binomial&quot;)))
+</code></pre>
+
+<pre><code>##                Estimate Std. Error    z value     Pr(&gt;|z|)
+## (Intercept)  1.64203786 1.66209832  0.9879306 3.231866e-01
+## age         -0.03819851 0.02886948 -1.3231451 1.857871e-01
+## sexmale     -1.60720872 0.38880536 -4.1337103 3.569534e-05
+</code></pre>
+
+<h2>Ad hoc solutions for testing associations</h2>
+
+<h3>Solution: Complete case (CC) analysis</h3>
+
+<p>Here we just remove samples with missing values.</p>
+
+<p>Here are the full data association statistics with CpG site cg07178945.</p>
+
+<pre><code class="r">data &lt;- cbind(samples, sva.smoking)
+data$cpg &lt;- meth[&quot;cg07178945&quot;,]
+coef(summary(lm(cpg ~ ., data)))[&quot;smokingnever&quot;,]
+</code></pre>
+
+<pre><code>##      Estimate    Std. Error       t value      Pr(&gt;|t|) 
+## -4.643091e-02  6.608516e-03 -7.025921e+00  4.984723e-11
+</code></pre>
+
+<p>In the complete case analysis of MCAR, the association with smoking status
+is still there but much weaker due to reduced sample size.</p>
+
+<pre><code class="r">data &lt;- cbind(samples.mcar, sva.smoking)
+data$cpg &lt;- meth[&quot;cg07178945&quot;,]
+data &lt;- na.omit(data)
+coef(summary(lm(cpg ~ ., data)))[&quot;smokingnever&quot;,]
+</code></pre>
+
+<pre><code>##      Estimate    Std. Error       t value      Pr(&gt;|t|) 
+## -4.254030e-02  7.164111e-03 -5.937973e+00  2.511050e-08
+</code></pre>
+
+<p>The full data analysis of cg14024579.</p>
+
+<pre><code class="r">data &lt;- cbind(samples, sva.smoking)
+data$cpg &lt;- meth[&quot;cg14024579&quot;,]
+coef(summary(lm(cpg ~ ., data)))[&quot;smokingnever&quot;,]
+</code></pre>
+
+<pre><code>##    Estimate  Std. Error     t value    Pr(&gt;|t|) 
+## 0.009756944 0.005914970 1.649533908 0.100895782
+</code></pre>
+
+<p>This time, with complete case analysis of MAR, the association
+becomes much stronger.</p>
+
+<pre><code class="r">data &lt;- cbind(samples.mar, sva.smoking)
+data$cpg &lt;- meth[&quot;cg14024579&quot;,]
+data &lt;- na.omit(data)
+coef(summary(lm(cpg ~ ., data)))[&quot;smokingnever&quot;,]
+</code></pre>
+
+<pre><code>##    Estimate  Std. Error     t value    Pr(&gt;|t|) 
+## 0.021588732 0.007140281 3.023512913 0.003015148
+</code></pre>
+
+<h3>Solution: Impute mean/median/mode</h3>
+
+<p>To avoid losing power, we could replace missing values
+with &#39;reasonable&#39; values, e.g. mean, median or mode.</p>
+
+<p>The full data analysis of cg07178945.</p>
+
+<pre><code class="r">data &lt;- cbind(samples, sva.smoking)
+data$cpg &lt;- meth[&quot;cg07178945&quot;,]
+coef(summary(lm(cpg ~ ., data)))[&quot;smokingnever&quot;,]
+</code></pre>
+
+<pre><code>##      Estimate    Std. Error       t value      Pr(&gt;|t|) 
+## -4.643091e-02  6.608516e-03 -7.025921e+00  4.984723e-11
+</code></pre>
+
+<p>Complete case:</p>
+
+<pre><code class="r">data &lt;- cbind(samples.mis, sva.smoking)
+data$cpg &lt;- meth[&quot;cg07178945&quot;,]
+coef(summary(lm(cpg ~ ., data)))[&quot;smokingnever&quot;,]
+</code></pre>
+
+<pre><code>##      Estimate    Std. Error       t value      Pr(&gt;|t|) 
+## -4.806207e-02  8.053398e-03 -5.967924e+00  2.055330e-08
+</code></pre>
+
+<p>By imputing with the mode (most people are never smokers),
+we reclassify many smokers as never smokers and reduce power.</p>
+
+<pre><code class="r">data &lt;- cbind(samples.mcar, sva.smoking)
+data$smoking[which(is.na(data$smoking))] &lt;- names(which.max(table(samples.mcar$smoking)))
+data$cpg &lt;- meth[&quot;cg07178945&quot;,]
+coef(summary(lm(cpg ~ ., data)))[&quot;smokingnever&quot;,]
+</code></pre>
+
+<pre><code>##      Estimate    Std. Error       t value      Pr(&gt;|t|) 
+## -4.384964e-02  7.212197e-03 -6.079928e+00  7.766277e-09
+</code></pre>
+
+<p>In the missing-at-random dataset, imputation with the mode
+weakens the association compared to complete case analysis.</p>
+
+<pre><code class="r">data &lt;- cbind(samples.mar, sva.smoking)
+data$smoking[which(is.na(data$smoking))] &lt;- names(which.max(table(samples.mar$smoking)))
+data$cpg &lt;- meth[&quot;cg07178945&quot;,]
+coef(summary(lm(cpg ~ ., data)))[&quot;smokingnever&quot;,]
+</code></pre>
+
+<pre><code>##      Estimate    Std. Error       t value      Pr(&gt;|t|) 
+## -4.517944e-02  8.141135e-03 -5.549526e+00  1.089015e-07
+</code></pre>
+
+<h3>Solution: Imputing to conserve statistical properties</h3>
+
+<p>We can make the imputation a bit more interesting
+by imputing randomly according to properties of the existing data.
+In the smoking example, we impute randomly so that the ratio
+of smokers to never-smokers remains the same.</p>
+
+<p>Not an improvement in the association of cg21161138 with smoking in the MCAR
+dataset compared to imputing the mode.</p>
+
+<p>Mode:</p>
+
+<pre><code class="r">data &lt;- cbind(samples.mcar, sva.smoking)
+data$smoking[which(is.na(data$smoking))] &lt;- names(which.max(table(samples.mcar$smoking)))
+data$cpg &lt;- meth[&quot;cg21161138&quot;,]
+coef(summary(lm(cpg ~ ., data)))[&quot;smokingnever&quot;,]
+</code></pre>
+
+<pre><code>##     Estimate   Std. Error      t value     Pr(&gt;|t|) 
+## 9.185805e-02 5.556028e-03 1.653304e+01 3.803867e-37
+</code></pre>
+
+<pre><code class="r">data &lt;- cbind(samples.mcar, sva.smoking)
+idx &lt;- which(is.na(data$smoking))
+p.smoker &lt;- sum(data$smoking == &quot;current&quot;, na.rm=T)/nrow(data)
+data$smoking[idx] &lt;- sample(c(&quot;current&quot;,&quot;never&quot;),
+                            size=length(idx),
+                            prob=c(p.smoker, 1-p.smoker),
+                            replace=T)
+data$cpg &lt;- meth[&quot;cg21161138&quot;,]
+coef(summary(lm(cpg ~ ., data)))[&quot;smokingnever&quot;,]
+</code></pre>
+
+<pre><code>##     Estimate   Std. Error      t value     Pr(&gt;|t|) 
+## 6.434755e-02 6.214994e-03 1.035360e+01 9.170254e-20
+</code></pre>
+
+<h3>Solution: Multiple imputation</h3>
+
+<p>In multiple imputation, we attempt to allow other variables
+to help decide on the best values to impute for each sample
+instead of assigning values blindly.</p>
+
+<p>Multiple imputation begins by imputing &#39;reasonable&#39; values
+for each variable (e.g. mean) and then repeatedly using
+the currently imputed dataset to predict values for one of the
+variables with missing values.
+This is repeated some maximum number of iterations or until
+values don&#39;t change much.</p>
+
+<p>To take into account the uncertainty in the imputed values,
+multiple datasets are imputed.  Downstream association
+testing is then applied to each dataset and the summary
+statistics pooled.</p>
+
+<h4>Simple example</h4>
+
+<p>To make things interesting, we remove values for both smoking and age.</p>
+
+<pre><code class="r">samples.mis &lt;- samples
+samples.mis$smoking[sample(1:nrow(samples.mis), 30)] &lt;- NA
+samples.mis$age[sample(1:nrow(samples.mis),30)] &lt;- NA
+</code></pre>
+
+<p>For future reference, we identify the positions of missing values.</p>
+
+<pre><code class="r">smoking.idx &lt;- which(is.na(samples.mis$smoking))
+age.idx &lt;- which(is.na(samples.mis$age))
+</code></pre>
+
+<p>We begin multiple imputation by filling in missing values with reasonable
+starting values, e.g. mean or mode.</p>
+
+<pre><code class="r">samples.mis$smoking[smoking.idx] &lt;- names(which.max(table(samples.mis$smoking)))
+samples.mis$age[age.idx] &lt;- mean(samples.mis$age, na.rm=T)
+</code></pre>
+
+<p>For comparison, we show the relationship of the imputed dataset with the
+original dataset.</p>
+
+<pre><code class="r">table(samples.mis$smoking, samples$smoking)
+</code></pre>
+
+<pre><code>##          
+##           current former never
+##   current      20      0     0
+##   former        0      0     0
+##   never         2      0   179
+</code></pre>
+
+<pre><code class="r">cor(samples.mis$age, samples$age)
+</code></pre>
+
+<pre><code>## [1] 0.9383978
+</code></pre>
+
+<p>Next we predict age missing values using all other variables in the dataset.</p>
+
+<pre><code class="r">fit &lt;- glm(age ~ ., samples.mis[-age.idx,], family=&quot;gaussian&quot;)
+samples.mis$age[age.idx] &lt;- predict(fit, newdata=samples.mis[age.idx,], type=&quot;response&quot;)
+</code></pre>
+
+<p>We do the same for smoking status.</p>
+
+<pre><code class="r">fit &lt;- glm(sign(smoking == &quot;current&quot;) ~ ., samples.mis[-smoking.idx,], family=&quot;binomial&quot;)
+probs &lt;- predict(fit, newdata=samples.mis[smoking.idx,], type=&quot;response&quot;)
+samples.mis$smoking[smoking.idx] &lt;- ifelse(probs &gt; 0.5, &quot;current&quot;, &quot;never&quot;)
+</code></pre>
+
+<p>Unfortunately we observe no improvement.</p>
+
+<pre><code class="r">table(samples.mis$smoking, samples$smoking)
+</code></pre>
+
+<pre><code>##          
+##           current former never
+##   current      20      0     0
+##   former        0      0     0
+##   never         2      0   179
+</code></pre>
+
+<pre><code class="r">cor(samples.mis$age, samples$age)
+</code></pre>
+
+<pre><code>## [1] 0.9358325
+</code></pre>
+
+<p>This actually makes sense because none of the variables
+in the dataset are strongly associated with age or smoking status.</p>
+
+<pre><code class="r">coef(summary(glm(smoking ~ ., samples, family=binomial)))
+</code></pre>
+
+<pre><code>##               Estimate Std. Error   z value  Pr(&gt;|z|)
+## (Intercept) 0.44535941 1.92931718 0.2308378 0.8174408
+## age         0.02939856 0.03346428 0.8785056 0.3796694
+## sexmale     0.06019524 0.49696980 0.1211245 0.9035924
+</code></pre>
+
+<pre><code class="r">coef(summary(glm(age ~ ., samples, family=gaussian)))
+</code></pre>
+
+<pre><code>##               Estimate Std. Error    t value     Pr(&gt;|t|)
+## (Intercept)  55.968180   1.586237 35.2836268 2.450239e-87
+## smokingnever  1.328764   1.514053  0.8776207 3.812133e-01
+## sexmale      -2.753330   1.010538 -2.7246172 7.013788e-03
+</code></pre>
+
+<h4>Including DNA methylation to improve imputation</h4>
+
+<p>To improve imputation,
+we include sites well-known to be predictive of smoking (cg05575921)
+and age (cg21572722).</p>
+
+<pre><code class="r">samples.mis &lt;- samples
+samples.mis$cg05575921 &lt;- meth[&quot;cg05575921&quot;,]
+samples.mis$cg21572722 &lt;- meth[&quot;cg21572722&quot;,]  
+</code></pre>
+
+<p>We also reset the dataset.</p>
+
+<pre><code class="r">samples.mis$age[age.idx] &lt;- NA
+samples.mis$smoking[smoking.idx] &lt;- NA
+samples.mis$smoking[smoking.idx] &lt;- names(which.max(table(samples.mis$smoking)))
+samples.mis$age[age.idx] &lt;- mean(samples.mis$age, na.rm=T)
+</code></pre>
+
+<p>Once again, for reference we note comparison with the full dataset.</p>
+
+<pre><code class="r">table(samples.mis$smoking, samples$smoking)
+</code></pre>
+
+<pre><code>##          
+##           current former never
+##   current      20      0     0
+##   former        0      0     0
+##   never         2      0   179
+</code></pre>
+
+<pre><code class="r">cor(samples.mis$age, samples$age)
+</code></pre>
+
+<pre><code>## [1] 0.9383978
+</code></pre>
+
+<p>Again, we predict missing values using the other variables.</p>
+
+<pre><code class="r">fit &lt;- glm(age ~ ., samples.mis[-age.idx,], family=&quot;gaussian&quot;)
+samples.mis$age[age.idx] &lt;- predict(fit, newdata=samples.mis[age.idx,], type=&quot;response&quot;)
+
+fit &lt;- glm(sign(smoking == &quot;current&quot;) ~ ., samples.mis[-smoking.idx,], family=&quot;binomial&quot;)
+probs &lt;- predict(fit, newdata=samples.mis[smoking.idx,], type=&quot;response&quot;)
+samples.mis$smoking[smoking.idx] &lt;- ifelse(probs &gt; 0.5, &quot;current&quot;, &quot;never&quot;)
+</code></pre>
+
+<p>We observe greater agreement with the full dataset.</p>
+
+<pre><code class="r">table(samples.mis$smoking, samples$smoking)
+</code></pre>
+
+<pre><code>##          
+##           current former never
+##   current      22      0     0
+##   former        0      0     0
+##   never         0      0   179
+</code></pre>
+
+<pre><code class="r">cor(samples.mis$age, samples$age)
+</code></pre>
+
+<pre><code>## [1] 0.9714208
+</code></pre>
+
+<p>We repeat prediction.</p>
+
+<pre><code class="r">fit &lt;- glm(age ~ ., samples.mis[-age.idx,], family=&quot;gaussian&quot;)
+samples.mis$age[age.idx] &lt;- predict(fit, newdata=samples.mis[age.idx,], type=&quot;response&quot;)
+
+fit &lt;- glm(sign(smoking == &quot;current&quot;) ~ ., samples.mis[-smoking.idx,], family=&quot;binomial&quot;)
+probs &lt;- predict(fit, newdata=samples.mis[smoking.idx,], type=&quot;response&quot;)
+samples.mis$smoking[smoking.idx] &lt;- ifelse(probs &gt; 0.5, &quot;current&quot;, &quot;never&quot;)
+</code></pre>
+
+<p>This time we see no further improvement.</p>
+
+<pre><code class="r">table(samples.mis$smoking, samples$smoking)
+</code></pre>
+
+<pre><code>##          
+##           current former never
+##   current      22      0     0
+##   former        0      0     0
+##   never         0      0   179
+</code></pre>
+
+<pre><code class="r">cor(samples.mis$age, samples$age)
+</code></pre>
+
+<pre><code>## [1] 0.972284
+</code></pre>
+
+<h4>A more interesting example</h4>
+
+<p>To observe more interesting behaviour, we need
+two variables that have missing values and
+are associated with one another.</p>
+
+<p>This time, we&#39;ll create missing values in the age variable
+and the age-associated CpG site (cg21572722).</p>
+
+<pre><code class="r">set.seed(20180312)
+samples.mis &lt;- samples
+samples.mis$cg21572722 &lt;- meth[&quot;cg21572722&quot;,]
+cg.idx &lt;- sample(1:nrow(samples.mis), 20)
+samples.mis$cg21572722[cg.idx] &lt;- NA
+samples.mis$age[age.idx] &lt;- NA
+samples.mis$cg21572722[cg.idx] &lt;- mean(samples.mis$cg21572722, na.rm=T)
+samples.mis$age[age.idx] &lt;- mean(samples.mis$age, na.rm=T)
+</code></pre>
+
+<p>Ten times we&#39;ll predict values for each variable and compare to the full dataset.</p>
+
+<pre><code class="r">for (i in 1:8) {
+    cat(i, cor(samples.mis$age, samples$age), cor(samples.mis$cg21572722, meth[&quot;cg21572722&quot;,]), &quot;\n&quot;)
+
+    fit &lt;- glm(age ~ ., samples.mis[-age.idx,], family=&quot;gaussian&quot;)
+    samples.mis$age[age.idx] &lt;- predict(fit, newdata=samples.mis[age.idx,], type=&quot;response&quot;)
+
+    fit &lt;- glm(cg21572722 ~ ., samples.mis[-cg.idx,], family=&quot;gaussian&quot;)
+    samples.mis$cg21572722[cg.idx] &lt;- predict(fit, newdata=samples.mis[cg.idx,], type=&quot;response&quot;)
+}
+</code></pre>
+
+<pre><code>## 1 0.9383978 0.9354883 
+## 2 0.9710155 0.9726933 
+## 3 0.9723632 0.9728255 
+## 4 0.972379 0.9728259 
+## 5 0.9723809 0.9728258 
+## 6 0.9723815 0.9728257 
+## 7 0.9723817 0.9728257 
+## 8 0.9723818 0.9728257
+</code></pre>
+
+<h2>Imputation using mice</h2>
+
+<p>Fortunately an R package is available to do most of this for us.</p>
+
+<p>Once again, we create a dataset with missing age and CpG site values.
+We include surrogate variables because we&#39;ll use <code>mice</code>
+to illustrate the steps of an EWAS for a couple of CpG sites.</p>
+
+<pre><code class="r">set.seed(20180312)
+samples.mis &lt;- cbind(samples, sva=sva.age)
+samples.mis$cg21572722 &lt;- meth[&quot;cg21572722&quot;,]
+cg.idx &lt;- sample(1:nrow(samples.mis), 35)
+samples.mis$cg21572722[cg.idx] &lt;- NA
+samples.mis$age[age.idx] &lt;- NA
+</code></pre>
+
+<p>Imputation is completed with a single call to <code>mice()</code>.
+Here ask to impute 10 datasets, each time predicting values
+for each variable with missing values at most 10 times (<code>maxit</code>).</p>
+
+<pre><code class="r">library(mice)
+imp &lt;- mice(samples.mis, m=10, maxit=10, print=F, seed=20180312)
+</code></pre>
+
+<pre><code>## Warning: Number of logged events: 200
+</code></pre>
+
+<p>The prediction matrix determines which variables (columns) are used to
+impute values for other variables (rows).</p>
+
+<pre><code class="r">imp$pred
+</code></pre>
+
+<pre><code>##            smoking age sex sva.1 sva.2 sva.3 sva.4 sva.5 sva.6 sva.7 sva.8
+## smoking          0   1   1     1     1     1     1     1     1     1     1
+## age              1   0   1     1     1     1     1     1     1     1     1
+## sex              1   1   0     1     1     1     1     1     1     1     1
+## sva.1            1   1   1     0     1     1     1     1     1     1     1
+## sva.2            1   1   1     1     0     1     1     1     1     1     1
+## sva.3            1   1   1     1     1     0     1     1     1     1     1
+## sva.4            1   1   1     1     1     1     0     1     1     1     1
+## sva.5            1   1   1     1     1     1     1     0     1     1     1
+## sva.6            1   1   1     1     1     1     1     1     0     1     1
+## sva.7            1   1   1     1     1     1     1     1     1     0     1
+## sva.8            1   1   1     1     1     1     1     1     1     1     0
+## sva.9            1   1   1     1     1     1     1     1     1     1     1
+## sva.10           1   1   1     1     1     1     1     1     1     1     1
+## sva.11           1   1   1     1     1     1     1     1     1     1     1
+## sva.12           1   1   1     1     1     1     1     1     1     1     1
+## sva.13           1   1   1     1     1     1     1     1     1     1     1
+## sva.14           1   1   1     1     1     1     1     1     1     1     1
+## sva.15           1   1   1     1     1     1     1     1     1     1     1
+## sva.16           1   1   1     1     1     1     1     1     1     1     1
+## sva.17           1   1   1     1     1     1     1     1     1     1     1
+## sva.18           1   1   1     1     1     1     1     1     1     1     1
+## sva.19           1   1   1     1     1     1     1     1     1     1     1
+## sva.20           1   1   1     1     1     1     1     1     1     1     1
+## sva.21           1   1   1     1     1     1     1     1     1     1     1
+## sva.22           1   1   1     1     1     1     1     1     1     1     1
+## sva.23           1   1   1     1     1     1     1     1     1     1     1
+## sva.24           1   1   1     1     1     1     1     1     1     1     1
+## sva.25           1   1   1     1     1     1     1     1     1     1     1
+## sva.26           1   1   1     1     1     1     1     1     1     1     1
+## sva.27           1   1   1     1     1     1     1     1     1     1     1
+## sva.28           1   1   1     1     1     1     1     1     1     1     1
+## sva.29           1   1   1     1     1     1     1     1     1     1     1
+## sva.30           1   1   1     1     1     1     1     1     1     1     1
+## sva.31           1   1   1     1     1     1     1     1     1     1     1
+## sva.32           1   1   1     1     1     1     1     1     1     1     1
+## sva.33           1   1   1     1     1     1     1     1     1     1     1
+## sva.34           1   1   1     1     1     1     1     1     1     1     1
+## sva.35           1   1   1     1     1     1     1     1     1     1     1
+## sva.36           1   1   1     1     1     1     1     1     1     1     1
+## sva.37           1   1   1     1     1     1     1     1     1     1     1
+## sva.38           1   1   1     1     1     1     1     1     1     1     1
+## sva.39           1   1   1     1     1     1     1     1     1     1     1
+## sva.40           1   1   1     1     1     1     1     1     1     1     1
+## sva.41           1   1   1     1     1     1     1     1     1     1     1
+## sva.42           1   1   1     1     1     1     1     1     1     1     1
+## sva.43           1   1   1     1     1     1     1     1     1     1     1
+## sva.44           1   1   1     1     1     1     1     1     1     1     1
+## sva.45           1   1   1     1     1     1     1     1     1     1     1
+## sva.46           1   1   1     1     1     1     1     1     1     1     1
+## sva.47           1   1   1     1     1     1     1     1     1     1     1
+## sva.48           1   1   1     1     1     1     1     1     1     1     1
+## sva.49           1   1   1     1     1     1     1     1     1     1     1
+## sva.50           1   1   1     1     1     1     1     1     1     1     1
+## sva.51           1   1   1     1     1     1     1     1     1     1     1
+## sva.52           1   1   1     1     1     1     1     1     1     1     1
+## sva.53           1   1   1     1     1     1     1     1     1     1     1
+## sva.54           1   1   1     1     1     1     1     1     1     1     1
+## sva.55           1   1   1     1     1     1     1     1     1     1     1
+## sva.56           1   1   1     1     1     1     1     1     1     1     1
+## sva.57           1   1   1     1     1     1     1     1     1     1     1
+## sva.58           1   1   1     1     1     1     1     1     1     1     1
+## sva.59           1   1   1     1     1     1     1     1     1     1     1
+## sva.60           1   1   1     1     1     1     1     1     1     1     1
+## sva.61           1   1   1     1     1     1     1     1     1     1     1
+## sva.62           1   1   1     1     1     1     1     1     1     1     1
+## sva.63           1   1   1     1     1     1     1     1     1     1     1
+## cg21572722       1   1   1     1     1     1     1     1     1     1     1
+##            sva.9 sva.10 sva.11 sva.12 sva.13 sva.14 sva.15 sva.16 sva.17
+## smoking        1      1      1      1      1      1      1      1      1
+## age            1      1      1      1      1      1      1      1      1
+## sex            1      1      1      1      1      1      1      1      1
+## sva.1          1      0      0      0      0      0      0      0      0
+## sva.2          1      1      1      1      1      1      1      1      1
+## sva.3          1      1      1      1      1      1      1      1      1
+## sva.4          1      1      1      1      1      1      1      1      1
+## sva.5          1      1      1      1      1      1      1      1      1
+## sva.6          1      1      1      1      1      1      1      1      1
+## sva.7          1      1      1      1      1      1      1      1      1
+## sva.8          1      1      1      1      1      1      1      1      1
+## sva.9          0      1      1      1      1      1      1      1      1
+## sva.10         1      0      1      1      1      1      1      1      1
+## sva.11         1      1      0      1      1      1      1      1      1
+## sva.12         1      1      1      0      1      1      1      1      1
+## sva.13         1      1      1      1      0      1      1      1      1
+## sva.14         1      1      1      1      1      0      1      1      1
+## sva.15         1      1      1      1      1      1      0      1      1
+## sva.16         1      1      1      1      1      1      1      0      1
+## sva.17         1      1      1      1      1      1      1      1      0
+## sva.18         1      1      1      1      1      1      1      1      1
+## sva.19         1      1      1      1      1      1      1      1      1
+## sva.20         1      1      1      1      1      1      1      1      1
+## sva.21         1      1      1      1      1      1      1      1      1
+## sva.22         1      1      1      1      1      1      1      1      1
+## sva.23         1      1      1      1      1      1      1      1      1
+## sva.24         1      1      1      1      1      1      1      1      1
+## sva.25         1      1      1      1      1      1      1      1      1
+## sva.26         1      1      1      1      1      1      1      1      1
+## sva.27         1      1      1      1      1      1      1      1      1
+## sva.28         1      1      1      1      1      1      1      1      1
+## sva.29         1      1      1      1      1      1      1      1      1
+## sva.30         1      1      1      1      1      1      1      1      1
+## sva.31         1      1      1      1      1      1      1      1      1
+## sva.32         1      1      1      1      1      1      1      1      1
+## sva.33         1      1      1      1      1      1      1      1      1
+## sva.34         1      1      1      1      1      1      1      1      1
+## sva.35         1      1      1      1      1      1      1      1      1
+## sva.36         1      1      1      1      1      1      1      1      1
+## sva.37         1      1      1      1      1      1      1      1      1
+## sva.38         1      1      1      1      1      1      1      1      1
+## sva.39         1      1      1      1      1      1      1      1      1
+## sva.40         1      1      1      1      1      1      1      1      1
+## sva.41         1      1      1      1      1      1      1      1      1
+## sva.42         1      1      1      1      1      1      1      1      1
+## sva.43         1      1      1      1      1      1      1      1      1
+## sva.44         1      1      1      1      1      1      1      1      1
+## sva.45         1      1      1      1      1      1      1      1      1
+## sva.46         1      1      1      1      1      1      1      1      1
+## sva.47         1      1      1      1      1      1      1      1      1
+## sva.48         1      1      1      1      1      1      1      1      1
+## sva.49         1      1      1      1      1      1      1      1      1
+## sva.50         1      1      1      1      1      1      1      1      1
+## sva.51         1      1      1      1      1      1      1      1      1
+## sva.52         1      1      1      1      1      1      1      1      1
+## sva.53         1      1      1      1      1      1      1      1      1
+## sva.54         1      1      1      1      1      1      1      1      1
+## sva.55         1      1      1      1      1      1      1      1      1
+## sva.56         1      1      1      1      1      1      1      1      1
+## sva.57         1      1      1      1      1      1      1      1      1
+## sva.58         1      1      1      1      1      1      1      1      1
+## sva.59         1      1      1      1      1      1      1      1      1
+## sva.60         1      1      1      1      1      1      1      1      1
+## sva.61         1      1      1      1      1      1      1      1      1
+## sva.62         1      1      1      1      1      1      1      1      1
+## sva.63         1      1      1      1      1      1      1      1      1
+## cg21572722     1      1      1      1      1      1      1      1      1
+##            sva.18 sva.19 sva.20 sva.21 sva.22 sva.23 sva.24 sva.25 sva.26
+## smoking         1      1      1      1      1      1      1      1      1
+## age             1      1      1      1      1      1      1      1      1
+## sex             1      1      1      1      1      1      1      1      1
+## sva.1           0      0      1      1      1      1      1      1      1
+## sva.2           1      1      0      0      0      0      0      0      0
+## sva.3           1      1      1      1      1      1      1      1      1
+## sva.4           1      1      1      1      1      1      1      1      1
+## sva.5           1      1      1      1      1      1      1      1      1
+## sva.6           1      1      1      1      1      1      1      1      1
+## sva.7           1      1      1      1      1      1      1      1      1
+## sva.8           1      1      1      1      1      1      1      1      1
+## sva.9           1      1      1      1      1      1      1      1      1
+## sva.10          1      1      1      1      1      1      1      1      1
+## sva.11          1      1      1      1      1      1      1      1      1
+## sva.12          1      1      1      1      1      1      1      1      1
+## sva.13          1      1      1      1      1      1      1      1      1
+## sva.14          1      1      1      1      1      1      1      1      1
+## sva.15          1      1      1      1      1      1      1      1      1
+## sva.16          1      1      1      1      1      1      1      1      1
+## sva.17          1      1      1      1      1      1      1      1      1
+## sva.18          0      1      1      1      1      1      1      1      1
+## sva.19          1      0      1      1      1      1      1      1      1
+## sva.20          1      1      0      1      1      1      1      1      1
+## sva.21          1      1      1      0      1      1      1      1      1
+## sva.22          1      1      1      1      0      1      1      1      1
+## sva.23          1      1      1      1      1      0      1      1      1
+## sva.24          1      1      1      1      1      1      0      1      1
+## sva.25          1      1      1      1      1      1      1      0      1
+## sva.26          1      1      1      1      1      1      1      1      0
+## sva.27          1      1      1      1      1      1      1      1      1
+## sva.28          1      1      1      1      1      1      1      1      1
+## sva.29          1      1      1      1      1      1      1      1      1
+## sva.30          1      1      1      1      1      1      1      1      1
+## sva.31          1      1      1      1      1      1      1      1      1
+## sva.32          1      1      1      1      1      1      1      1      1
+## sva.33          1      1      1      1      1      1      1      1      1
+## sva.34          1      1      1      1      1      1      1      1      1
+## sva.35          1      1      1      1      1      1      1      1      1
+## sva.36          1      1      1      1      1      1      1      1      1
+## sva.37          1      1      1      1      1      1      1      1      1
+## sva.38          1      1      1      1      1      1      1      1      1
+## sva.39          1      1      1      1      1      1      1      1      1
+## sva.40          1      1      1      1      1      1      1      1      1
+## sva.41          1      1      1      1      1      1      1      1      1
+## sva.42          1      1      1      1      1      1      1      1      1
+## sva.43          1      1      1      1      1      1      1      1      1
+## sva.44          1      1      1      1      1      1      1      1      1
+## sva.45          1      1      1      1      1      1      1      1      1
+## sva.46          1      1      1      1      1      1      1      1      1
+## sva.47          1      1      1      1      1      1      1      1      1
+## sva.48          1      1      1      1      1      1      1      1      1
+## sva.49          1      1      1      1      1      1      1      1      1
+## sva.50          1      1      1      1      1      1      1      1      1
+## sva.51          1      1      1      1      1      1      1      1      1
+## sva.52          1      1      1      1      1      1      1      1      1
+## sva.53          1      1      1      1      1      1      1      1      1
+## sva.54          1      1      1      1      1      1      1      1      1
+## sva.55          1      1      1      1      1      1      1      1      1
+## sva.56          1      1      1      1      1      1      1      1      1
+## sva.57          1      1      1      1      1      1      1      1      1
+## sva.58          1      1      1      1      1      1      1      1      1
+## sva.59          1      1      1      1      1      1      1      1      1
+## sva.60          1      1      1      1      1      1      1      1      1
+## sva.61          1      1      1      1      1      1      1      1      1
+## sva.62          1      1      1      1      1      1      1      1      1
+## sva.63          1      1      1      1      1      1      1      1      1
+## cg21572722      1      1      1      1      1      1      1      1      1
+##            sva.27 sva.28 sva.29 sva.30 sva.31 sva.32 sva.33 sva.34 sva.35
+## smoking         1      1      1      1      1      1      1      1      1
+## age             1      1      1      1      1      1      1      1      1
+## sex             1      1      1      1      1      1      1      1      1
+## sva.1           1      1      1      1      1      1      1      1      1
+## sva.2           0      0      0      1      1      1      1      1      1
+## sva.3           1      1      1      0      0      0      0      0      0
+## sva.4           1      1      1      1      1      1      1      1      1
+## sva.5           1      1      1      1      1      1      1      1      1
+## sva.6           1      1      1      1      1      1      1      1      1
+## sva.7           1      1      1      1      1      1      1      1      1
+## sva.8           1      1      1      1      1      1      1      1      1
+## sva.9           1      1      1      1      1      1      1      1      1
+## sva.10          1      1      1      1      1      1      1      1      1
+## sva.11          1      1      1      1      1      1      1      1      1
+## sva.12          1      1      1      1      1      1      1      1      1
+## sva.13          1      1      1      1      1      1      1      1      1
+## sva.14          1      1      1      1      1      1      1      1      1
+## sva.15          1      1      1      1      1      1      1      1      1
+## sva.16          1      1      1      1      1      1      1      1      1
+## sva.17          1      1      1      1      1      1      1      1      1
+## sva.18          1      1      1      1      1      1      1      1      1
+## sva.19          1      1      1      1      1      1      1      1      1
+## sva.20          1      1      1      1      1      1      1      1      1
+## sva.21          1      1      1      1      1      1      1      1      1
+## sva.22          1      1      1      1      1      1      1      1      1
+## sva.23          1      1      1      1      1      1      1      1      1
+## sva.24          1      1      1      1      1      1      1      1      1
+## sva.25          1      1      1      1      1      1      1      1      1
+## sva.26          1      1      1      1      1      1      1      1      1
+## sva.27          0      1      1      1      1      1      1      1      1
+## sva.28          1      0      1      1      1      1      1      1      1
+## sva.29          1      1      0      1      1      1      1      1      1
+## sva.30          1      1      1      0      1      1      1      1      1
+## sva.31          1      1      1      1      0      1      1      1      1
+## sva.32          1      1      1      1      1      0      1      1      1
+## sva.33          1      1      1      1      1      1      0      1      1
+## sva.34          1      1      1      1      1      1      1      0      1
+## sva.35          1      1      1      1      1      1      1      1      0
+## sva.36          1      1      1      1      1      1      1      1      1
+## sva.37          1      1      1      1      1      1      1      1      1
+## sva.38          1      1      1      1      1      1      1      1      1
+## sva.39          1      1      1      1      1      1      1      1      1
+## sva.40          1      1      1      1      1      1      1      1      1
+## sva.41          1      1      1      1      1      1      1      1      1
+## sva.42          1      1      1      1      1      1      1      1      1
+## sva.43          1      1      1      1      1      1      1      1      1
+## sva.44          1      1      1      1      1      1      1      1      1
+## sva.45          1      1      1      1      1      1      1      1      1
+## sva.46          1      1      1      1      1      1      1      1      1
+## sva.47          1      1      1      1      1      1      1      1      1
+## sva.48          1      1      1      1      1      1      1      1      1
+## sva.49          1      1      1      1      1      1      1      1      1
+## sva.50          1      1      1      1      1      1      1      1      1
+## sva.51          1      1      1      1      1      1      1      1      1
+## sva.52          1      1      1      1      1      1      1      1      1
+## sva.53          1      1      1      1      1      1      1      1      1
+## sva.54          1      1      1      1      1      1      1      1      1
+## sva.55          1      1      1      1      1      1      1      1      1
+## sva.56          1      1      1      1      1      1      1      1      1
+## sva.57          1      1      1      1      1      1      1      1      1
+## sva.58          1      1      1      1      1      1      1      1      1
+## sva.59          1      1      1      1      1      1      1      1      1
+## sva.60          1      1      1      1      1      1      1      1      1
+## sva.61          1      1      1      1      1      1      1      1      1
+## sva.62          1      1      1      1      1      1      1      1      1
+## sva.63          1      1      1      1      1      1      1      1      1
+## cg21572722      1      1      1      1      1      1      1      1      1
+##            sva.36 sva.37 sva.38 sva.39 sva.40 sva.41 sva.42 sva.43 sva.44
+## smoking         1      1      1      1      1      1      1      1      1
+## age             1      1      1      1      1      1      1      1      1
+## sex             1      1      1      1      1      1      1      1      1
+## sva.1           1      1      1      1      1      1      1      1      1
+## sva.2           1      1      1      1      1      1      1      1      1
+## sva.3           0      0      0      0      1      1      1      1      1
+## sva.4           1      1      1      1      0      0      0      0      0
+## sva.5           1      1      1      1      1      1      1      1      1
+## sva.6           1      1      1      1      1      1      1      1      1
+## sva.7           1      1      1      1      1      1      1      1      1
+## sva.8           1      1      1      1      1      1      1      1      1
+## sva.9           1      1      1      1      1      1      1      1      1
+## sva.10          1      1      1      1      1      1      1      1      1
+## sva.11          1      1      1      1      1      1      1      1      1
+## sva.12          1      1      1      1      1      1      1      1      1
+## sva.13          1      1      1      1      1      1      1      1      1
+## sva.14          1      1      1      1      1      1      1      1      1
+## sva.15          1      1      1      1      1      1      1      1      1
+## sva.16          1      1      1      1      1      1      1      1      1
+## sva.17          1      1      1      1      1      1      1      1      1
+## sva.18          1      1      1      1      1      1      1      1      1
+## sva.19          1      1      1      1      1      1      1      1      1
+## sva.20          1      1      1      1      1      1      1      1      1
+## sva.21          1      1      1      1      1      1      1      1      1
+## sva.22          1      1      1      1      1      1      1      1      1
+## sva.23          1      1      1      1      1      1      1      1      1
+## sva.24          1      1      1      1      1      1      1      1      1
+## sva.25          1      1      1      1      1      1      1      1      1
+## sva.26          1      1      1      1      1      1      1      1      1
+## sva.27          1      1      1      1      1      1      1      1      1
+## sva.28          1      1      1      1      1      1      1      1      1
+## sva.29          1      1      1      1      1      1      1      1      1
+## sva.30          1      1      1      1      1      1      1      1      1
+## sva.31          1      1      1      1      1      1      1      1      1
+## sva.32          1      1      1      1      1      1      1      1      1
+## sva.33          1      1      1      1      1      1      1      1      1
+## sva.34          1      1      1      1      1      1      1      1      1
+## sva.35          1      1      1      1      1      1      1      1      1
+## sva.36          0      1      1      1      1      1      1      1      1
+## sva.37          1      0      1      1      1      1      1      1      1
+## sva.38          1      1      0      1      1      1      1      1      1
+## sva.39          1      1      1      0      1      1      1      1      1
+## sva.40          1      1      1      1      0      1      1      1      1
+## sva.41          1      1      1      1      1      0      1      1      1
+## sva.42          1      1      1      1      1      1      0      1      1
+## sva.43          1      1      1      1      1      1      1      0      1
+## sva.44          1      1      1      1      1      1      1      1      0
+## sva.45          1      1      1      1      1      1      1      1      1
+## sva.46          1      1      1      1      1      1      1      1      1
+## sva.47          1      1      1      1      1      1      1      1      1
+## sva.48          1      1      1      1      1      1      1      1      1
+## sva.49          1      1      1      1      1      1      1      1      1
+## sva.50          1      1      1      1      1      1      1      1      1
+## sva.51          1      1      1      1      1      1      1      1      1
+## sva.52          1      1      1      1      1      1      1      1      1
+## sva.53          1      1      1      1      1      1      1      1      1
+## sva.54          1      1      1      1      1      1      1      1      1
+## sva.55          1      1      1      1      1      1      1      1      1
+## sva.56          1      1      1      1      1      1      1      1      1
+## sva.57          1      1      1      1      1      1      1      1      1
+## sva.58          1      1      1      1      1      1      1      1      1
+## sva.59          1      1      1      1      1      1      1      1      1
+## sva.60          1      1      1      1      1      1      1      1      1
+## sva.61          1      1      1      1      1      1      1      1      1
+## sva.62          1      1      1      1      1      1      1      1      1
+## sva.63          1      1      1      1      1      1      1      1      1
+## cg21572722      1      1      1      1      1      1      1      1      1
+##            sva.45 sva.46 sva.47 sva.48 sva.49 sva.50 sva.51 sva.52 sva.53
+## smoking         1      1      1      1      1      1      1      1      1
+## age             1      1      1      1      1      1      1      1      1
+## sex             1      1      1      1      1      1      1      1      1
+## sva.1           1      1      1      1      1      1      1      1      1
+## sva.2           1      1      1      1      1      1      1      1      1
+## sva.3           1      1      1      1      1      1      1      1      1
+## sva.4           0      0      0      0      0      1      1      1      1
+## sva.5           1      1      1      1      1      0      0      0      0
+## sva.6           1      1      1      1      1      1      1      1      1
+## sva.7           1      1      1      1      1      1      1      1      1
+## sva.8           1      1      1      1      1      1      1      1      1
+## sva.9           1      1      1      1      1      1      1      1      1
+## sva.10          1      1      1      1      1      1      1      1      1
+## sva.11          1      1      1      1      1      1      1      1      1
+## sva.12          1      1      1      1      1      1      1      1      1
+## sva.13          1      1      1      1      1      1      1      1      1
+## sva.14          1      1      1      1      1      1      1      1      1
+## sva.15          1      1      1      1      1      1      1      1      1
+## sva.16          1      1      1      1      1      1      1      1      1
+## sva.17          1      1      1      1      1      1      1      1      1
+## sva.18          1      1      1      1      1      1      1      1      1
+## sva.19          1      1      1      1      1      1      1      1      1
+## sva.20          1      1      1      1      1      1      1      1      1
+## sva.21          1      1      1      1      1      1      1      1      1
+## sva.22          1      1      1      1      1      1      1      1      1
+## sva.23          1      1      1      1      1      1      1      1      1
+## sva.24          1      1      1      1      1      1      1      1      1
+## sva.25          1      1      1      1      1      1      1      1      1
+## sva.26          1      1      1      1      1      1      1      1      1
+## sva.27          1      1      1      1      1      1      1      1      1
+## sva.28          1      1      1      1      1      1      1      1      1
+## sva.29          1      1      1      1      1      1      1      1      1
+## sva.30          1      1      1      1      1      1      1      1      1
+## sva.31          1      1      1      1      1      1      1      1      1
+## sva.32          1      1      1      1      1      1      1      1      1
+## sva.33          1      1      1      1      1      1      1      1      1
+## sva.34          1      1      1      1      1      1      1      1      1
+## sva.35          1      1      1      1      1      1      1      1      1
+## sva.36          1      1      1      1      1      1      1      1      1
+## sva.37          1      1      1      1      1      1      1      1      1
+## sva.38          1      1      1      1      1      1      1      1      1
+## sva.39          1      1      1      1      1      1      1      1      1
+## sva.40          1      1      1      1      1      1      1      1      1
+## sva.41          1      1      1      1      1      1      1      1      1
+## sva.42          1      1      1      1      1      1      1      1      1
+## sva.43          1      1      1      1      1      1      1      1      1
+## sva.44          1      1      1      1      1      1      1      1      1
+## sva.45          0      1      1      1      1      1      1      1      1
+## sva.46          1      0      1      1      1      1      1      1      1
+## sva.47          1      1      0      1      1      1      1      1      1
+## sva.48          1      1      1      0      1      1      1      1      1
+## sva.49          1      1      1      1      0      1      1      1      1
+## sva.50          1      1      1      1      1      0      1      1      1
+## sva.51          1      1      1      1      1      1      0      1      1
+## sva.52          1      1      1      1      1      1      1      0      1
+## sva.53          1      1      1      1      1      1      1      1      0
+## sva.54          1      1      1      1      1      1      1      1      1
+## sva.55          1      1      1      1      1      1      1      1      1
+## sva.56          1      1      1      1      1      1      1      1      1
+## sva.57          1      1      1      1      1      1      1      1      1
+## sva.58          1      1      1      1      1      1      1      1      1
+## sva.59          1      1      1      1      1      1      1      1      1
+## sva.60          1      1      1      1      1      1      1      1      1
+## sva.61          1      1      1      1      1      1      1      1      1
+## sva.62          1      1      1      1      1      1      1      1      1
+## sva.63          1      1      1      1      1      1      1      1      1
+## cg21572722      1      1      1      1      1      1      1      1      1
+##            sva.54 sva.55 sva.56 sva.57 sva.58 sva.59 sva.60 sva.61 sva.62
+## smoking         1      1      1      1      1      1      1      1      1
+## age             1      1      1      1      1      1      1      1      1
+## sex             1      1      1      1      1      1      1      1      1
+## sva.1           1      1      1      1      1      1      1      1      1
+## sva.2           1      1      1      1      1      1      1      1      1
+## sva.3           1      1      1      1      1      1      1      1      1
+## sva.4           1      1      1      1      1      1      1      1      1
+## sva.5           0      0      0      0      0      0      1      1      1
+## sva.6           1      1      1      1      1      1      0      0      0
+## sva.7           1      1      1      1      1      1      1      1      1
+## sva.8           1      1      1      1      1      1      1      1      1
+## sva.9           1      1      1      1      1      1      1      1      1
+## sva.10          1      1      1      1      1      1      1      1      1
+## sva.11          1      1      1      1      1      1      1      1      1
+## sva.12          1      1      1      1      1      1      1      1      1
+## sva.13          1      1      1      1      1      1      1      1      1
+## sva.14          1      1      1      1      1      1      1      1      1
+## sva.15          1      1      1      1      1      1      1      1      1
+## sva.16          1      1      1      1      1      1      1      1      1
+## sva.17          1      1      1      1      1      1      1      1      1
+## sva.18          1      1      1      1      1      1      1      1      1
+## sva.19          1      1      1      1      1      1      1      1      1
+## sva.20          1      1      1      1      1      1      1      1      1
+## sva.21          1      1      1      1      1      1      1      1      1
+## sva.22          1      1      1      1      1      1      1      1      1
+## sva.23          1      1      1      1      1      1      1      1      1
+## sva.24          1      1      1      1      1      1      1      1      1
+## sva.25          1      1      1      1      1      1      1      1      1
+## sva.26          1      1      1      1      1      1      1      1      1
+## sva.27          1      1      1      1      1      1      1      1      1
+## sva.28          1      1      1      1      1      1      1      1      1
+## sva.29          1      1      1      1      1      1      1      1      1
+## sva.30          1      1      1      1      1      1      1      1      1
+## sva.31          1      1      1      1      1      1      1      1      1
+## sva.32          1      1      1      1      1      1      1      1      1
+## sva.33          1      1      1      1      1      1      1      1      1
+## sva.34          1      1      1      1      1      1      1      1      1
+## sva.35          1      1      1      1      1      1      1      1      1
+## sva.36          1      1      1      1      1      1      1      1      1
+## sva.37          1      1      1      1      1      1      1      1      1
+## sva.38          1      1      1      1      1      1      1      1      1
+## sva.39          1      1      1      1      1      1      1      1      1
+## sva.40          1      1      1      1      1      1      1      1      1
+## sva.41          1      1      1      1      1      1      1      1      1
+## sva.42          1      1      1      1      1      1      1      1      1
+## sva.43          1      1      1      1      1      1      1      1      1
+## sva.44          1      1      1      1      1      1      1      1      1
+## sva.45          1      1      1      1      1      1      1      1      1
+## sva.46          1      1      1      1      1      1      1      1      1
+## sva.47          1      1      1      1      1      1      1      1      1
+## sva.48          1      1      1      1      1      1      1      1      1
+## sva.49          1      1      1      1      1      1      1      1      1
+## sva.50          1      1      1      1      1      1      1      1      1
+## sva.51          1      1      1      1      1      1      1      1      1
+## sva.52          1      1      1      1      1      1      1      1      1
+## sva.53          1      1      1      1      1      1      1      1      1
+## sva.54          0      1      1      1      1      1      1      1      1
+## sva.55          1      0      1      1      1      1      1      1      1
+## sva.56          1      1      0      1      1      1      1      1      1
+## sva.57          1      1      1      0      1      1      1      1      1
+## sva.58          1      1      1      1      0      1      1      1      1
+## sva.59          1      1      1      1      1      0      1      1      1
+## sva.60          1      1      1      1      1      1      0      1      1
+## sva.61          1      1      1      1      1      1      1      0      1
+## sva.62          1      1      1      1      1      1      1      1      0
+## sva.63          1      1      1      1      1      1      1      1      1
+## cg21572722      1      1      1      1      1      1      1      1      1
+##            sva.63 cg21572722
+## smoking         1          1
+## age             1          1
+## sex             1          1
+## sva.1           1          1
+## sva.2           1          1
+## sva.3           1          1
+## sva.4           1          1
+## sva.5           1          1
+## sva.6           0          1
+## sva.7           1          1
+## sva.8           1          1
+## sva.9           1          1
+## sva.10          1          1
+## sva.11          1          1
+## sva.12          1          1
+## sva.13          1          1
+## sva.14          1          1
+## sva.15          1          1
+## sva.16          1          1
+## sva.17          1          1
+## sva.18          1          1
+## sva.19          1          1
+## sva.20          1          1
+## sva.21          1          1
+## sva.22          1          1
+## sva.23          1          1
+## sva.24          1          1
+## sva.25          1          1
+## sva.26          1          1
+## sva.27          1          1
+## sva.28          1          1
+## sva.29          1          1
+## sva.30          1          1
+## sva.31          1          1
+## sva.32          1          1
+## sva.33          1          1
+## sva.34          1          1
+## sva.35          1          1
+## sva.36          1          1
+## sva.37          1          1
+## sva.38          1          1
+## sva.39          1          1
+## sva.40          1          1
+## sva.41          1          1
+## sva.42          1          1
+## sva.43          1          1
+## sva.44          1          1
+## sva.45          1          1
+## sva.46          1          1
+## sva.47          1          1
+## sva.48          1          1
+## sva.49          1          1
+## sva.50          1          1
+## sva.51          1          1
+## sva.52          1          1
+## sva.53          1          1
+## sva.54          1          1
+## sva.55          1          1
+## sva.56          1          1
+## sva.57          1          1
+## sva.58          1          1
+## sva.59          1          1
+## sva.60          1          1
+## sva.61          1          1
+## sva.62          1          1
+## sva.63          0          1
+## cg21572722      1          0
+</code></pre>
+
+<p>A <code>1</code> indicates that the variable in the column is used to impute values for the
+variable in the row.
+Notice how there are 1&#39;s in the rows only of variables with missing values.</p>
+
+<p>Within each imputed dataset, we can calculate the correlation of age with
+the age variable in the full dataset.</p>
+
+<pre><code class="r">unlist(with(imp, cor(age, samples$age))$analyses)
+</code></pre>
+
+<pre><code>##  [1] 0.9071685 0.9219443 0.9295520 0.9183630 0.9351234 0.9184417 0.9322300
+##  [8] 0.9113708 0.9274307 0.9426592
+</code></pre>
+
+<pre><code class="r">quantile(unlist(with(imp, cor(age, samples$age))$analyses))
+</code></pre>
+
+<pre><code>##        0%       25%       50%       75%      100% 
+## 0.9071685 0.9183826 0.9246875 0.9315605 0.9426592
+</code></pre>
+
+<p>Here we fit a linear model in each imputed dataset.</p>
+
+<pre><code class="r">fit &lt;- with(imp, lm(cg21572722 ~ age + smoking + sex + sva.1 + sva.2 + sva.3 + sva.4))
+</code></pre>
+
+<p>Therefore we have 10 model fits. We show the summary statistics
+for the first two.</p>
+
+<pre><code class="r">length(fit$analyses)
+</code></pre>
+
+<pre><code>## [1] 10
+</code></pre>
+
+<pre><code class="r">coef(summary(fit$analyses[[1]]))
+</code></pre>
+
+<pre><code>##                  Estimate   Std. Error    t value     Pr(&gt;|t|)
+## (Intercept)   0.374550317 0.0416368941  8.9956354 2.205903e-16
+## age           0.001637678 0.0001910164  8.5734920 3.223878e-15
+## smokingnever -0.006255448 0.0042312569 -1.4783899 1.409336e-01
+## sexmale      -0.053938452 0.0567221826 -0.9509234 3.428326e-01
+## sva.1         0.560810000 0.5601839960  1.0011175 3.180235e-01
+## sva.2         0.224786211 0.0315122320  7.1333002 1.922739e-11
+## sva.3         0.005782113 0.0334017516  0.1731081 8.627479e-01
+## sva.4         0.032992510 0.0296300678  1.1134808 2.668868e-01
+</code></pre>
+
+<pre><code class="r">coef(summary(fit$analyses[[2]]))
+</code></pre>
+
+<pre><code>##                  Estimate   Std. Error    t value     Pr(&gt;|t|)
+## (Intercept)   0.334689244 0.0432913974  7.7310797 5.729764e-13
+## age           0.001725174 0.0001953258  8.8322896 6.265707e-16
+## smokingnever -0.001885681 0.0043567044 -0.4328229 6.656267e-01
+## sexmale      -0.008606018 0.0587175111 -0.1465665 8.836272e-01
+## sva.1         0.097750579 0.5798431303  0.1685811 8.663027e-01
+## sva.2         0.240467200 0.0325920399  7.3780960 4.643845e-12
+## sva.3         0.015012083 0.0345397712  0.4346318 6.643153e-01
+## sva.4         0.012306293 0.0306373860  0.4016757 6.883671e-01
+</code></pre>
+
+<p>To obtain summary statistics across all model fits,
+we &#39;pool&#39; the summary statistics of each.</p>
+
+<pre><code class="r">pool.fit &lt;- pool(fit)
+</code></pre>
+
+<p>The pooled summary statistics for &#39;age&#39;:</p>
+
+<pre><code class="r">summary(pool.fit)[&quot;age&quot;,]
+</code></pre>
+
+<pre><code>##        estimate    std.error statistic       df      p.value
+## age 0.001594739 0.0002283402  6.984048 75.45443 7.469492e-11
+</code></pre>
+
+<p>The complete case association in this case is quite similar.</p>
+
+<pre><code class="r">fit.cc &lt;- lm(cg21572722 ~ age + smoking + sex + sva.1 + sva.2 + sva.3 + sva.4, samples.mis)
+coef(summary(fit.cc))[&quot;age&quot;,]
+</code></pre>
+
+<pre><code>##     Estimate   Std. Error      t value     Pr(&gt;|t|) 
+## 1.767848e-03 2.322437e-04 7.612038e+00 4.865750e-12
+</code></pre>
+
+<p>What if we consider another CpG site known to be associated with age but
+was not included in the imputation?</p>
+
+<pre><code class="r">fit &lt;- with(imp, lm(meth[&quot;cg27193080&quot;,] ~ age + smoking + sex + sva.1 + sva.2 + sva.3 + sva.4))
+summary(pool(fit))[&quot;age&quot;,]
+</code></pre>
+
+<pre><code>##         estimate    std.error statistic       df     p.value
+## age -0.001348686 0.0003573995 -3.773609 103.8462 0.000214735
+</code></pre>
+
+<p>The complete case is much stronger &hellip;</p>
+
+<pre><code class="r">fit.cc &lt;- lm(meth[&quot;cg27193080&quot;,] ~ age + smoking + sex + sva.1 + sva.2 + sva.3 + sva.4, samples.mis)
+coef(summary(fit.cc))[&quot;age&quot;,]
+</code></pre>
+
+<pre><code>##      Estimate    Std. Error       t value      Pr(&gt;|t|) 
+## -1.629459e-03  3.461588e-04 -4.707258e+00  5.334813e-06
+</code></pre>
+
+<h2>Imputation for EWAS</h2>
+
+<h3>Option 1: Separate CpGs</h3>
+
+<ol>
+<li>Identify available variables known to be associated with each covariate with missing values.</li>
+<li>For each CpG site:
+2a. Impute N datasets including the CpG site methylation levels, all additional variables and covariates.
+2b. Within each dataset fit a model to test association of the CpG site with variable of interest.
+2c. Pool model fits to obtain association summary statistics (e.g. estimate, se, p-value).</li>
+</ol>
+
+<p>In other words, for each CpG site <code>cg</code>:</p>
+
+<pre><code class="r">data &lt;- ... ## var, additional variables, covariates
+for (cg in cgs) {
+    data$cg &lt;- meth[cg,]
+    imp &lt;- mice(data, ...)
+    fit &lt;- with(imp, lm(cg ~ var + score1 + score2 + ... + var1 + var2 + ... + cov1 + cov2 + ...))
+    fit &lt;- pool(fit)
+    summary(fit)[&quot;var&quot;,] ## save summary statistics
+}
+</code></pre>
+
+<p>Problem: Running time is very long.</p>
+
+<h3>Option 2: Using associated CpGs – Naïve Method</h3>
+
+<ol>
+<li>To reduce running time, impute N datasets one time as above but
+excluding methylation levels of CpG sites (except for all those
+associated with the variable of interest).</li>
+<li>For each CpG site, fit a model with each imputed dataset and pool model fits.</li>
+</ol>
+
+<pre><code class="r">data &lt;- ... ## var, additional variables, covariates, all CpG sites associated with var
+imp &lt;- mice(data, ...)
+for (cg in cgs) {
+    data$cg &lt;- meth[cg,]
+    fit &lt;- with(imp, lm(cg ~ var + score1 + score2 + ... + var1 + var2 + ... + cov1 + cov2 + ...))
+    fit &lt;- pool(fit)
+    summary(fit)[&quot;var&quot;,] ## save summary statistics    
+}
+</code></pre>
+
+<p>Problem: Models can be very large and association testing
+for CpG sites not included in the imputation are biased to the null.</p>
+
+<h3>Option 3: Using associated CpGs – Wu Method</h3>
+
+<p>As above, but instead of just including all associated CpG sites,
+construct a methylation predictor of the variable of interest
+and include only those in the imputation model.</p>
+
+<p>Wu et al. generated a predictor using forward-stepwise selection
+from the set of 100 CpG most strongly associated with the
+variable of interest in the complete-case dataset.</p>
+
+<p>Problem: Also tends to bias CpG sites not included in the imputation
+to null but not as badly as the Naive method.</p>
+
+<h3>Option 4: Random bins of fixed size always including associated CpGs – Wu bins</h3>
+
+<p>Construct bins of CpG sites of size B such that:
+1. Each CpG site in the Wu predictor appears in every bin, and
+2. Each other CpG site appears in exactly one bin.</p>
+
+<p>For each bin:
+1. Impute N datasets with all CpG sites and all variables and covariates.
+2. For each CpG site in the bin (except We predictor sites), fit a
+   model for each dataset, pool the model fits and save summary
+   statistics.</p>
+
+<p>Bin size B is selected so that there is a 3:1 or 10:1 ratio of samples to
+variables (i.e. variables, covariates, CpG sites) in the imputation models.</p>
+
+<h3>Option 5: Random bins of fixed size</h3>
+
+<p>As above except that no predictors are generated
+so each CpG site is randomly assigned to a single bin.</p>
+
+<h2>R package for imputation in EWAS</h2>
+
+<p>Coming soon to the <code>ewaff</code> R package.  Here is what an imputation EWAS will be executed.
+We&#39;ll use the random bins method.</p>
+
+<pre><code class="r">imp &lt;- ewaff.impute(methylation ~ age + smoking + sex, data, methylation, isv=TRUE)
+</code></pre>
+
+<p>Here we print out the Bonferroni-adjusted associations.</p>
+
+<pre><code class="r">imp$table[which(imp$table$p.adjust &lt; 0.05),]
+</code></pre>
+
+</body>
+
+</html>
