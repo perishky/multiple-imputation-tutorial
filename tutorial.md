@@ -1,11 +1,4 @@
 
-```r
-library(knitr)
-knit("tutorial.rmd","tutorial.md")
-library(markdown)
-markdownToHTML("tutorial.md","tutorial.html")
-```
-
 # Missing data
 
 ## Load the dataset

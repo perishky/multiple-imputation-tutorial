@@ -1,4 +1,4 @@
-```{r,eval=F}
+```{r,eval=F,echo=F}
 library(knitr)
 knit("tutorial.rmd","tutorial.md")
 library(markdown)
